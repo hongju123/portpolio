@@ -1,0 +1,19 @@
+html,
+body,
+.wrap {
+    color: white;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: -10000000000;
+}
+.container_area{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+.search_area{
+    width: 100%;
+    height: 100%;
+    border: 1px solid white;
+}

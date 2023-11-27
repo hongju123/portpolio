@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="index_resource/css/index_main.css">
+    <link rel="stylesheet" href="index_resource/css/common.css">
+
 </head>
+
 <body>
     <div class="wrap">
         <header>
+            <div class="container_area">
+                <div>
+                    <div>메뉴</div>
+                </div>
+                
+                <div class="search_area">
+                    <img class="hidden img" src="index_resource/img/pngwing.com.png" alt="">
+                    <div class="header_text">검색</div>
+                    <input type="text" onfocus="showElement(this)" onfocusout="hideElement(this)" name="main_search"
+                        class="main_search" id="search_area">
+                </div>
 
+                <div class="login_area">
+                    로그인
+                </div>
+            </div>
         </header>
         <section class="main_section">
-            
+
         </section>
         <footer>
 
         </footer>
     </div>
+    <script src="index_resource/js/header.js"></script>
 </body>
+
 </html>
