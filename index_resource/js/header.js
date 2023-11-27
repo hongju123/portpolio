@@ -17,3 +17,14 @@ function makeSizeUpOnFocus() {
 function makeSizeDownOnFocus(sizeElement) {
     document.querySelector(".search_area").classList.remove("sizeUp");
 }
+
+
+let observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        entry.isIntersecting === true ?
+            entry.target.classList.add("ani") :
+            entry.target.classList.remove("ani");
+    });
+});
+
+document.querySelectorAll(".observer").length === 0 ? null : document.querySelectorAll(".observer").forEach(data => observer.observe(data));
