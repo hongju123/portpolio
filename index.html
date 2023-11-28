@@ -29,14 +29,14 @@
                 </div>
             </div>
         </header>
-        <section class="main_section">
+        <!-- <section class="main_section">
             <div class="main_title font observer">
                 안녕하세요.<br>
                 저의 코딩 회고록에 오신것을<br>
                 환영합니다 <br>
                 😄
             </div>
-        </section>
+        </section> -->
         <section class="second_section">
             <div class="intro font ">
                 <div class="observer">
@@ -44,19 +44,34 @@
                     음...쉬운데?
                 </div>
             </div>
-            <div class="project_area growing_effect" >
-                <div class="painting_area">
-                    <canvas></canvas>
-                    <input type="color" name="" id="">
-                    <input type="color" name="" id="">
-                    <input type="color" name="" id="">
-                    <input type="color" name="" id="">
-                    <input type="color" name="" id="">
-                    <input type="color" name="" id="">
-                    <input type="color" name="" id="">
-                    <input type="color" name="" id="">
-                    <input type="color" name="" id="">
-                    <input type="color" name="" id="">
+            <div class="project_area growing_effect">
+                <div class="painting-area">
+                    <div class="color-options observer-left">
+                        <input type="color" id="color" />
+                        <div class="color-option" style="background-color: #1abc9c" data-color="#1abc9c"></div>
+                        <div class="color-option" style="background-color: #3498db" data-color="#3498db"></div>
+                        <div class="color-option" style="background-color: #34495e" data-color="#34495e"></div>
+                        <div class="color-option" style="background-color: #27ae60" data-color="#27ae60"></div>
+                        <div class="color-option" style="background-color: #8e44ad" data-color="#8e44ad"></div>
+                        <div class="color-option" style="background-color: #f1c40f" data-color="#f1c40f"></div>
+                        <div class="color-option" style="background-color: #e74c3c" data-color="#e74c3c"></div>
+                        <div class="color-option" style="background-color: #95a5a6" data-color="#95a5a6"></div>
+                        <div class="color-option" style="background-color: #d35400" data-color="#d35400"></div>
+                        <div class="color-option" style="background-color: #2ecc71" data-color="#2ecc71"></div>
+                        <div class="color-option" style="background-color: #e67e22" data-color="#e67e22"></div>
+                    </div>
+                    <canvas class="observer"></canvas>
+                    <div class="btns observer-right">
+                        <input id="line-width" type="range" min="1" max="30" value="5" step="0.1" />
+                        <button id="mode-btn">🩸 Fill</button>
+                        <button id="destroy-btn">💣 Destroy</button>
+                        <button id="eraser-btn">❌ Erase</button>
+                        <label for="file">
+                            💅🏻 Add Photo
+                            <input type="file" accept="image/*" id="file" /></label>
+                        <input type="text" id="text" placeholder="text 😄!" />
+                        <button id="save">🖼 Save image</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -65,6 +80,7 @@
         </footer>
     </div>
     <script src="index_resource/js/header.js"></script>
+    <script src="index_resource/js/painting.js"></script>
 </body>
 
 </html>

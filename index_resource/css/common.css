@@ -209,3 +209,28 @@ img {
     }
     100% {opacity: 1;}
 }
+
+.observer-left{
+    opacity: 0;
+}
+.ani-left{
+    animation: showElementLeft 3s ease-in-out forwards;
+}
+@keyframes showElementLeft {
+    0% {
+        transform: translateX(-10vh);
+    }
+    100% {opacity: 1;}
+}
+.observer-right{
+    opacity: 0;
+}
+.ani-right{
+    animation: showElementRight 3s ease-in-out forwards;
+}
+@keyframes showElementRight {
+    0% {
+        transform: translateX(10vh);
+    }
+    100% {opacity: 1;}
+}
