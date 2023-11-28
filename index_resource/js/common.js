@@ -48,3 +48,8 @@ let observerRight = new IntersectionObserver(entries => {
 });
 
 document.querySelectorAll(".observer-right").length === 0 ? null : document.querySelectorAll(".observer-right").forEach(data => observerRight.observe(data));
+
+document.addEventListener('DOMContentLoaded', function() {
+    let widthSize = document.querySelectorAll(".card").length * 20;
+    document.documentElement.style.setProperty("--widthSize", `${-widthSize}vw`);
+});

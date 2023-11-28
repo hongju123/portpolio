@@ -234,3 +234,37 @@ img {
     }
     100% {opacity: 1;}
 }
+
+/* slide show */
+.card{
+    width: 30vw ; 
+    height: 60%;
+    margin: 0 50px;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.card>*{
+    border: 1px solid white;
+    width: 80%;
+    height: 40%;
+    margin: 5px;
+}
+.slide-left{
+    animation: moveLeft 15s infinite alternate;
+}
+/* var 크기는 card숫자만큼으로  */
+:root{
+    --widthSize:0;
+}
+@keyframes moveLeft {
+    0%{
+        
+    }
+    100%{
+        transform: translateX(var(--widthSize));
+    }
+    
+}

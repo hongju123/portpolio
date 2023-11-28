@@ -1,10 +1,11 @@
-
+section{
+    width: 100vw;
+    height: 100vh;
+}
 .main_section {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100vh;
     background-image: url(../img/main_section.jpg);
     background: linear-gradient(to bottom,
             rgba(255, 255, 255, 0) 0%,
@@ -32,8 +33,6 @@
 }
 
 .second_section{
-    width: 100vw;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -46,6 +45,7 @@
     height: 20%;
     width: 100%;
     text-shadow: 0px 0px 10px black;
+    border: 1px solid white;
 }
 .project-area{
     border: 1px solid white;
@@ -102,6 +102,7 @@ input#color {
     background-color: white;
 }
 
+
 button,
 label {
     all:unset;
@@ -137,4 +138,26 @@ input#text {
 
 #line-width{
     background-color: aliceblue;
+}
+
+
+/* html-section */
+.img_area{
+    width: 100%;
+    height: 80vh;
+    border: 1px solid white;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img_container{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.img_container>*{
+    flex-shrink: 0;
 }
