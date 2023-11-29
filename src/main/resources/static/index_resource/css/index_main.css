@@ -161,3 +161,9 @@ input#text {
 .img_container>*{
     flex-shrink: 0;
 }
+.ppt_area{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

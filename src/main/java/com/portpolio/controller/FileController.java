@@ -30,14 +30,14 @@ public class FileController {
     FileService fileService;
 
     @GetMapping(value = { "/{option}/{filename}" })
-    public ResponseEntity<Resource> fileOption(@PathVariable String option, @PathVariable String filename, HttpServletRequest req)
+    public ResponseEntity<Resource> fileOption(@PathVariable String option, @PathVariable String filename)
             throws IOException {
         FileDTO file = new FileDTO();
         file.setOriginalName(filename);
         log.info("{}{}", option, filename);
         switch (option) {
             case "downLoad":
-                return fileService.downLoadFile(file,req.getContextPath());
+                return fileService.downLoadFile(file);
             case "upLoad":
                 return ResponseEntity.status(HttpStatus.CREATED).build();
             default:

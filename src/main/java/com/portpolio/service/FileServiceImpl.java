@@ -2,12 +2,14 @@ package com.portpolio.service;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -22,20 +24,24 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FileServiceImpl implements FileService {
 
-    @Value("D:\\workSpace\\home-work\\portpolio\\server-file\\")
+    @Value("${file.path}")
     private String filePath;
 
     @Override
-    public ResponseEntity<Resource> downLoadFile(FileDTO fileDTO,String location) throws IOException{
-    	
-    	System.out.println(filePath+fileDTO.getOriginalName()+",,,,,,,"+location);
-        File file = new File(filePath+fileDTO.getOriginalName());
-        log.info("{}",filePath+"/"+fileDTO.getOriginalName());
-        System.out.println(file.exists());
+    public ResponseEntity<Resource> downLoadFile(FileDTO fileDTO) throws IOException {
+            File file = new File(filePath + fileDTO.getOriginalName());
+            log.info("{}", filePath + "/" + fileDTO.getOriginalName());
 
-        InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + fileDTO.getOriginalName())
-                .contentType(MediaType.APPLICATION_OCTET_STREAM).body(resource);
+            if (file.exists()) {
+                InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+                return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + fileDTO.getOriginalName())
+                    .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                    .body(resource);
+            } else {
+            	System.out.println("안되지롱");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
     }
 
     @Override

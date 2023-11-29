@@ -1,3 +1,9 @@
+section{
+    overflow: hidden;
+}
+a{
+    all:unset;
+}
 body {
     margin: 0px;
 }
@@ -238,7 +244,7 @@ img {
 /* slide show */
 .card{
     width: 30vw ; 
-    height: 60%;
+    height: 70%;
     margin: 0 50px;
     border: 1px solid white;
     display: flex;
@@ -249,11 +255,14 @@ img {
 .card>*{
     border: 1px solid white;
     width: 80%;
-    height: 40%;
+    height: 50%;
     margin: 5px;
 }
 .slide-left{
     animation: moveLeft 15s infinite alternate;
+}
+.slide-left:hover{
+    animation-play-state: paused;
 }
 /* var 크기는 card숫자만큼으로  */
 :root{
@@ -267,4 +276,22 @@ img {
         transform: translateX(var(--widthSize));
     }
     
+}
+.card-content{
+    font-size: border;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+.a-btn{
+    cursor: pointer;
+    width: 30%;
+    height: 30%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+
 }

@@ -10,7 +10,7 @@ import com.portpolio.domain.dto.FileDTO;
 import jakarta.servlet.http.HttpServletRequest;
 
 public interface FileService {
-    public ResponseEntity<Resource> downLoadFile(FileDTO fileDTO,String location) throws IOException;
+    public ResponseEntity<Resource> downLoadFile(FileDTO fileDTO) throws IOException;
     public boolean upLoadFile(FileDTO fileDTO);
     public boolean deleteFile(FileDTO fileDTO);
     public boolean modifyFile(FileDTO fileDTO);

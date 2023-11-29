@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -84,12 +84,40 @@
                     그리고 스프링..
                 </div>
             </div>
-			<div>
-				
+
+			<div class="ppt_area">
+
+                <div class="img_container ">
+                    
+                    <div class=" card  observer">
+                        <img class="card-img growing_effect" th:src="@{/index_resource/img/ppt-0.png}" alt="Download">
+                        <div class="card-content">
+                            팀이정해지고...
+                        </div>
+                    </div>
+                    
+                    <div class=" card  observer">
+                        <img class="card-img growing_effect" th:src="@{/index_resource/img/ppt-1.png}" alt="Download">
+                        <div class="card-content">
+                            어쩌다보니 조장이 되어버렸다..
+                        </div>
+                    </div>
+                    
+                    <div class=" card  observer">
+                        <img class="card-img " th:src="@{/index_resource/img/ppt-2.png}" alt="Download">
+                        <div class="card-content">
+                            프로젝트...잘 할수 있을까..?
+                        </div>
+                    </div>
+                    
+                </div>
+                <a class="a-btn growing_effect" th:href="@{/api/file/downLoad/1조_Final.pdf}">
+                    ppt 보기
+                </a>
 			</div>
         </section>
         <section>
-			            <div class="img_area">
+			<div class="img_area">
                 <div class="img_container slide-left">
                     <div class="card growing_effect observer">
                         <img class="card-img" src="index_resource/img/main_section.jpg" alt="">
@@ -121,7 +149,6 @@
                             내용을 넣고 
                         </div>
                     </div>
-                    
                 </div>
             </div>
 		</section>
