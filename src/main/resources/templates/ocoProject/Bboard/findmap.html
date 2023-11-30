@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>맵으로 보기</title>
+	<link rel="icon" sizes="96x96" th:href="@{/main/images/favi.svg}">
+	<link rel="stylesheet" th:href="@{/main/css/common.css}">
+	<link rel="stylesheet" th:href="@{/main/css/sub.css}">
+	<style>
+		@keyframes left {
+			0% {
+				opacity: 0;
+				transform: translateX(-40px);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
+		@keyframes right {
+			0% {
+				opacity: 0;
+				transform: translateX(40px);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
+		@keyframes slideUp {
+			0% {
+				opacity: 0;
+				transform: translateY(40px);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		#wrap {
+			margin: 150px auto;
+			width: 1200px;
+			border: 1px solid black;
+			height: 1000px;
+		}
+
+		.select_map {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		/*맵*/
+		#map {
+			border: 1px solid black;
+			width: 1000px;
+			height: 750px;
+			z-index: 1;
+			animation: right 0.5s ease-out;
+		}
+
+		/*버튼쪽 section*/
+		.select_category_section {
+			height: 100px;
+		}
+
+		.btn_area {
+			width: 400px;
+			height: 50px;
+			text-align: center;
+		}
+
+		.category_btn {
+			margin: 0 10px;
+			border: 1px solid rgb(132, 179, 248);
+			border-radius: 20px;
+			width: 150px;
+			height: 50px;
+			text-align: center;
+			cursor: pointer;
+			animation: left 0.5s ease-out;
+		}
+
+		/*로드뷰 부분*/
+
+      #roadview {
+         width: 1000px;
+         height: 375px;
+         margin-top: 20px;
+      }
+
+
+
+
+
+
+
+		/*모달창 부분*/
+		.modal {
+			position: fixed;
+			display: none;
+			justify-content: center;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.4);
+			z-index: 2000000000;
+		}
+
+		.modal_body {
+			position: absolute;
+			top: 50%;
+			width: 400px;
+			height: 600px;
+			padding: 20px;
+			background-color: rgba(255, 255, 255, 0.9);
+			box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+			transform: translateY(-50%);
+			overflow: auto;
+		}
+
+		.close_area {
+			text-align: right;
+			font-size: 24px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+		#category_select_section {
+			margin-top: 20px;
+			background-color: rgba(233, 233, 233, 0.2);
+			border-radius: 20px;
+		}
+
+		.category_2 {
+			box-sizing: border-box;
+			padding: 10px;
+			font-size: 20px;
+			font-weight: bold;
+			border-bottom: 1px solid rgba(132, 179, 248, 0.35);
+			cursor: pointer;
+		}
+
+		.category_2_detail:hover {
+			background: rgb(233, 233, 233);
+		}
+
+		.category_2_detail:not(:last-child) {
+			box-sizing: border-box;
+			padding: 10px 0 10px 20px;
+			border-bottom: 1px solid rgba(132, 179, 248, 0.35);
+			cursor: pointer;
+			color: rgba(0, 0, 0, 0.4);
+		}
+
+		.category_2_detail:last-child {
+			box-sizing: border-box;
+			padding: 10px 0 10px 20px;
+			cursor: pointer;
+			color: rgba(0, 0, 0, 0.4);
+		}
+
+
+		/*맵 상세 레이아웃*/
+		.info_wrap {
+			position: absolute;
+			left: 0;
+			bottom: 40px;
+			width: 288px;
+			height: 132px;
+			margin-left: -144px;
+			text-align: left;
+			overflow: hidden;
+			font-size: 12px;
+			font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+			line-height: 1.5;
+		}
+
+		.info_wrap * {
+			padding: 0;
+			margin: 0;
+		}
+
+		.info_wrap .info {
+			width: 286px;
+			height: 120px;
+			border-radius: 5px;
+			border-bottom: 2px solid #ccc;
+			border-right: 1px solid #ccc;
+			overflow: hidden;
+			background: #fff;
+		}
+
+		.info_wrap .info:nth-child(1) {
+			border: 0;
+			box-shadow: 0px 1px 2px #888;
+		}
+
+		.info_wrap .title {
+			padding: 5px 0 0 10px;
+			height: 30px;
+			background: #eee;
+			border-bottom: 1px solid #ddd;
+			font-size: 18px;
+			font-weight: bold;
+		}
+
+		.info_wrap #close {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			color: #888;
+			width: 17px;
+			height: 17px;
+			background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
+		}
+
+		.info_wrap #close:hover {
+			cursor: pointer;
+		}
+
+		.info_wrap .body {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.info_wrap .desc {
+			position: relative;
+			margin: 13px 0 0 90px;
+			height: 75px;
+		}
+
+		.desc .ellipsis {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		.desc .jibun {
+			font-size: 11px;
+			color: #888;
+			margin-top: -2px;
+		}
+
+		.info_wrap .img {
+			position: absolute;
+			top: 6px;
+			left: 5px;
+			width: 73px;
+			height: 71px;
+			border: 1px solid #ddd;
+			color: #888;
+			overflow: hidden;
+		}
+
+		.info_wrap:after {
+			content: '';
+			position: absolute;
+			margin-left: -12px;
+			left: 50%;
+			bottom: 0;
+			width: 22px;
+			height: 12px;
+			background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+		}
+
+		.info_wrap .link {
+			color: #5085BB;
+		}
+	</style>
+	</style>
+</head>
+
+<body>
+	<th:block th:replace="~{layout/header::header}"></th:block>
+ <div class="wrap">
+      <th:block th:replace="~{layout/subVisual::subVisual}"></th:block>
+      <div class="sub-inner">
+         <div class="sub-tit">
+            <h2 data-aos="fade-up">여행, 예약부터<br> 막막하다면?<br> <strong>오시오!</strong></h2>
+         </div><!--.sub-tit-->
+         <div class="depth2-wrap" data-aos="fade-up">
+            <ul class="depth2 sub-nav">
+               <li><a th:href="@{/Bboard/getlist}">찾아보기</a></li>
+               <li class="active"><a th:href="@{/Bboard/findmap}">맵으로 찾기</a></li>
+            </ul>
+         </div>
+         <div class="select_map">
+            <div class="select_category_section">
+               <div class="btn_area">
+                  <input type="text" class="category_btn" name="" id="category_main" value="전체"
+                     onclick="selectCategory_main()" readonly>
+                  <input type="text" class="category_btn" name="" id="category_city" value="전 지역"
+                     onclick="selectCategory_city()" readonly>
+               </div>
+               <div class="modal">
+                  <div class="modal_body">
+                     <div class="close_area">X</div>
+                     <div id="category_select_section">
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="map_area">
+               <div id="map">
+               </div>
+               <div id="roadview">
+               </div>
+            </div>
+         </div>
+      </div><!--.sub-inner-->
+   </div><!--.wrap-->
+	<th:block th:replace="~{layout/footer::footer}"></th:block>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{list/js/selectcity.js}"></script>
+<script th:src="@{list/js/selectmain.js}"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=71d14da2b8928980c31f877a8bc84a90&libraries=services"></script>
+<script th:src="@{map/js/onposition.js}"></script>
+<script type="text/javascript" th:src="@{/main/js/common.js}"></script>
+<script type="text/javascript" th:src="@{/main/js/main.js}"></script>
+<script th:src="@{list/js/modal.js}"></script>
+<script th:inline="javascript">
+
+	/*	AOS.init({
+			duration: 1200,
+		});  */
+
+	function thumbnail(use, files) {
+		for (let file of files) {
+			if (file.boardNum == use.businessIdx) {
+				return '/Bboard/thumbnail?systemName=' + file.systemName;
+			}
+		}
+		return '';
+	}
+
+
+	let setMain = /*[[${main}]]*/'';
+	let setCity = /*[[${city}]]*/'';
+
+	if (setMain != null && setCity != null) {
+		document.getElementById("category_main").setAttribute("value", setMain)
+		document.getElementById("category_city").setAttribute("value", setCity)
+	}
+
+	const category = ["숙소", "카페", "식당", "렌터카", "기타"]
+	var markers = [];
+
+
+	let mapContainer = document.getElementById('map'), // 지도를 표시할 div
+		mapOption = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+			level: 4 // 지도의 확대 레벨
+		};
+	let map = new kakao.maps.Map(mapContainer, mapOption); // 지도생성*/
+	var roadviewContainer = document.getElementById('roadview'); //로드뷰를 표시할 div
+	var roadview = new kakao.maps.Roadview(roadviewContainer); //로드뷰 객체
+	var roadviewClient = new kakao.maps.RoadviewClient(); //좌표로부터 로드뷰 파노ID를 가져올 로드뷰 helper객체
+	const showRoadView = function (position) {
+		roadviewClient.getNearestPanoId(position, 50, function (panoId) {
+			roadview.setPanoId(panoId, position);
+		});
+	}
+	//
+	$(document).ready(function () {
+		roadviewContainer.style.display = "none";
+	})
+	const selectService = (function () {
+
+		function selectAll(data) {
+			$.ajax({
+				url: "/Bboard/findlist",
+				method: "GET",
+				data: {"main": data.category, "city": data.city},
+				contentType: "application/json;charset=utf-8",
+				success: function (data) {
+					const user = data.ulist; //유저 데이터 추출
+					const info = data.ilist;
+					const profiles = data.plist;
+
+
+					if (markers.length != 0) {
+						for (let i = 0; i < markers.length; i++) {
+							markers[i].setMap(null);
+						}
+						markers = [];
+					}
+
+					for (let use of user) { //빠른 for문
+						for (let inf of info) {
+							if (use.businessId == inf.businessId) {
+
+								var geocoder = new kakao.maps.services.Geocoder(); // 주소-좌표 변환 객체를 생성합니다
+
+								geocoder.addressSearch(use.businessAddress, function (result, status) { // DB 주소로 좌표 검색
+
+									if (status === kakao.maps.services.Status.OK) { //검색 완료
+
+										var coords = new kakao.maps.LatLng(result[0].y, result[0].x); //
+
+										var imgeSrc = "",
+											imageSize = new kakao.maps.Size(36, 40), // 마커이미지의 크기입니다
+											imageOption = {offset: new kakao.maps.Point(18, 32)}; //
+
+
+										for (let cate of category) {
+											console.log(use.businessCategory.includes(cate))
+											use.businessCategory.includes(cate) ? imgeSrc = "./map/img/" + cate + ".png" : "";
+										}
+										console.log(imgeSrc)
+										var markerImage = new kakao.maps.MarkerImage(imgeSrc, imageSize, imageOption),
+											markerPosition = coords // 마커가 표시될 위치입니다
+
+
+
+										var marker = new kakao.maps.Marker({  // 결과값으로 받은 위치를 마커로 표시합니다
+											image: markerImage,
+											position: coords // 주소
+										});
+
+
+										markers.push(marker)
+
+										for (let i = 0; i < markers.length; i++) {
+											markers[i].setMap(map)
+										}
+
+										// 마커 위에 커스텀오버레이를 표시합니다
+										// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+										var overlay = new kakao.maps.CustomOverlay({
+											map: map,
+											position: marker.getPosition(),  //마커 포지션
+										});
+
+										overlay.setMap(null); // 처음에는 지워둠
+										clickOverlay = null;
+
+										kakao.maps.event.addListener(marker, 'click', function () { // 마커를 클릭 했을때만 지움
+											roadviewContainer.style.display = "";
+											mapContainer.style.height = "440px";
+											let position = marker.getPosition()
+											showRoadView(position);
+											map.setCenter(position);
+											if (clickOverlay != null) {
+
+												clickOverlay.setMap(null);
+											}
+
+
+											overlay.setMap(map)
+											clickOverlay = overlay;
+										});
+
+										var info_wrap = document.createElement('div');
+										info_wrap.className = 'info_wrap';
+
+										var info = document.createElement('div');
+										info.className = 'info';
+										var title = document.createElement('div');
+										title.className = 'title';
+										title.innerHTML = use.businessStoreName
+										var close = document.createElement('div');
+										close.id = 'close';
+										close.title = '닫기';
+										close.onclick = function () {overlay.setMap(null), roadviewContainer.style.display = "none", mapContainer.style.height = "750px";};
+
+										var body = document.createElement('div');
+										body.className = 'body';
+										var img = document.createElement('div');
+										img.className = 'img';
+										var picture = document.createElement('img');
+
+										for (let profile of profiles) {
+											if (profile.boardNum == use.businessIdx) {
+												picture.src = '/Bboard/profile?systemName=' + profile.systemName
+												break;
+											}
+										}
+										picture.style.cssText = "width:73px; height:70px";
+
+										var desc = document.createElement('div');
+										desc.className = 'desc';
+										var ellipsis = document.createElement('div');
+										ellipsis.className = 'ellipsis';
+										ellipsis.innerHTML = use.businessAddress;
+										var jibun = document.createElement('div');
+										jibun.className = 'jibun ellipsis';
+										jibun.innerHTML = use.businessAddress
+
+										var in_a = document.createElement('div');
+										var link = document.createElement('a');
+										link.innerHTML = "개인 페이지"
+										link.className = 'link';
+										link.href = '/Bboard/get?businessIdx=' + use.businessIdx
+
+
+
+										info_wrap.appendChild(info).appendChild(title).append(close)
+										info.appendChild(body).appendChild(img).appendChild(picture)
+										body.appendChild(desc).appendChild(ellipsis)
+										body.appendChild(desc).appendChild(jibun)
+										body.appendChild(desc).appendChild(in_a).appendChild(link)
+
+										overlay.setContent(info_wrap);
+									}
+								})
+							}
+						}
+					}
+				}
+			})
+		}
+		return {getlist: selectAll}
+	})()
+
+	function category_select() {
+		selectService.getlist({"category": category_main.value, "city": category_city.value})
+	} category_select();
+
+
+
+</script>
+
+</html>

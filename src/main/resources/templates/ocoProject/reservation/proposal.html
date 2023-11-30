@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>제안서</title>
+	<link rel="icon" sizes="96x96" th:href="@{/main/images/favi.svg}">
+</head>
+<link rel="stylesheet" th:href="@{/main/css/common.css}">
+<link rel="stylesheet" th:href="@{/main/css/sub.css}">
+<link rel="stylesheet" th:href="@{/reservation/css/proposal.css}">
+
+<body>
+	<th:block th:replace="~{layout/header::header}"></th:block>
+	<div class="wrap">
+		<th:block th:replace="~{layout/subVisual::subVisual}"></th:block>
+		<div class="sub-inner">
+			<div class="sub-tit">
+				<h2 data-aos="fade-up">여행, 예약부터<br> 막막하다면?<br> <strong>오시오!</strong></h2>
+			</div><!--.sub-tit-->
+			<div class="depth2-wrap" data-aos="fade-up">
+				<ul class="depth2 sub-nav">
+					<li><a th:href="@{/reservation/reservationwrite}">견적서 작성</a></li>
+					<li><a th:href="@{/reservation/reservationlist}">견적서 조회</a></li>
+					<li class="active"><a th:href="@{/reservation/proposal}">제안서</a></li>
+				</ul>
+			</div>
+			<ul class="list">
+				<li>
+					<th:block th:if="${session.businessUser == 'X'}">
+						<th:block th:if="${blist !=null}" th:each="blist : ${blist}">
+							<th:block th:if="${list != null and list.size()>0}" th:each="board : ${list}">
+								<th:block th:each="boardId : ${#strings.arraySplit(board.businessId, '/')}">
+									<th:block th:if="${blist.businessId == boardId}">
+										<div class="proposal">
+											<div class="contents_area">
+												<div>
+													<h3>[[${blist.businessCategory}]]</h3><br>
+													<span>[[${blist.businessAddress}]]</span>
+													<span>[[${blist.businessStoreName}]]</span>
+													<p>[[${blist.businessId}]]</p>
+												</div>
+												<div>
+													<th:block th:if="${profiles != null and profiles.size() > 0}"
+														th:each="profile : ${profiles}">
+														<th:block th:if="${blist.businessIdx eq profile.boardNum}">
+															<th:block th:with="sar=${profile.org.split('[.]')}">
+																<th:block th:with="ext=${sar[sar.length-1]}">
+																	<th:block
+																		th:if="${ext == 'jpg' or ext == 'jpeg' or ext == 'png' or ext == 'gif' or ext == 'webp'}">
+																		<img class="img"
+																			th:src="@{/Bboard/profile (systemName=${profile.systemName})}">
+																	</th:block>
+																</th:block>
+															</th:block>
+														</th:block>
+													</th:block>
+												</div>
+											</div>
+											<div class="sum">
+												<a class="get" th:href="${blist.businessId}">자세히</a>
+											</div>
+										</div>
+									</th:block>
+								</th:block>
+							</th:block>
+						</th:block>
+					</th:block>
+				</li>
+			</ul>
+			<form name="getForm" id="getForm" th:action="@{/Bboard/getpage}"></form>
+		</div><!--.sub-inner-->
+	</div><!--.wrap-->
+	<th:block th:replace="~{layout/footer::footer}"></th:block>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" th:src="@{/main/js/jquery-3.6.0.min.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
+<script type="text/javascript" th:src="@{/main/js/slick.min.js}"></script>
+<script type="text/javascript" th:src="@{/main/js/common.js}"></script>
+<script type="text/javascript" th:src="@{/main/js/main.js}"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111023863-1"></script>
+<script th:inline="javascript">
+	const getForm = $("#getForm");
+	$(".get").on("click", function (e) {
+		e.preventDefault()
+		let businessId = $(this).attr("href");
+		getForm.find("input[name='businessId']").remove();
+		getForm.append("<input type='hidden' name='businessId' value='" + businessId + "'>")
+		getForm.submit();
+	})
+</script>
+
+</html>

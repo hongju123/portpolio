@@ -1,0 +1,200 @@
+<<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>견적서 리스트</title>
+	<link rel="icon" sizes="96x96" th:href="@{/main/images/favi.svg}"> 
+</head>
+<link rel="stylesheet" th:href="@{/main/css/common.css}">
+<link rel="stylesheet" th:href="@{/main/css/sub.css}">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">s
+<link rel="stylesheet" th:href="@{/reservation/css/get.css}">
+
+<body>
+	<th:block th:replace="~{layout/header::header}"></th:block>
+	<div class="wrap">
+		<th:block th:replace="~{layout/subVisual::subVisual}"></th:block>
+		<div class="sub-inner">
+			<div class="sub-tit">
+				<h2 data-aos="fade-up">여행, 예약부터<br> 막막하다면?<br> <strong>오시오!</strong></h2>
+			</div><!--.sub-tit-->
+			<div class="depth2-wrap" data-aos="fade-up">
+				<ul class="depth2 sub-nav">
+					<li><a th:href="@{/reservation/reservationwrite}">견적서 작성</a></li>
+					<li class="active"><a th:href="@{/reservation/reservationlist}">견적서 조회</a></li>
+					<th:block th:if="${session.businessUser == 'X'}">
+						<li><a th:href="@{/reservation/proposal}">제안서</a></li>
+					</th:block>
+				</ul>
+			</div>
+			<form id="Form" method="post" name="Form" th:action="@{/reservation/reservationwrite}" data-aos="fade-up">
+				<input type="hidden" th:value="${session.loginUser}" name="userId">
+				<div class="sec-half">
+					<div class="sec-con left-sec">
+						<span class="sec-tit">카테고리</span>
+						<input type="text" th:value="${reservation.category}" readonly>
+					</div><!--.category-sec-->
+					<div class="sec-con right-sec">
+						<span class="sec-tit">유형</span>
+						<input type="text" th:value="${reservation.requestType}" readonly>
+					</div><!--.type-sec-->
+				</div><!--.sec-half-->
+
+				<div class="sec-con">
+					<span class="sec-tit">지역</span>
+					<input type="text" class="areaA" id="areaA" name="address" th:value="${reservation.address}"
+						readonly>
+				</div>
+				<div class="sec-con">
+					<a href="#" class="calendar sec-tit">날짜</a>
+					<input type="text" class="calendars" name="regDate" th:value="${reservation.regDate}" readonly>
+				</div>
+				<div class="sec-half" data-aos="fade-up">
+					<div class="sec-con left-sec personnel">
+						<span class="sec-tit">인원수(연료)</span>
+						<th:block th:if="${reservation.category == '렌터카'}">
+							<input type="text" name="fuel" size="50" maxlength="50" th:value="${reservation.fuel}"
+								readonly>
+
+						</th:block>
+						<th:block
+							th:if="${reservation.category == '숙소' || reservation.category == '식당' || reservation.category == '카페' ||reservation.category == '기타'}">
+							<input type="text" name="personnel" size="50" maxlength="50"
+								th:value="${reservation.personnel}+명" readonly>
+						</th:block>
+					</div>
+					<div class="sec-con right-sec">
+						<span class="sec-tit">금액대</span>
+						<input type="text" th:value="${reservation.cost}+만원" readonly>
+					</div>
+				</div>
+				<div class="sec-con">
+					<span class="sec-tit">편의시설</span>
+					<!--<input type="text" class="amenities" name="amenities" id="amenities" value="선택" readonly>-->
+					<input type="text" name="amenities" id="amenities" th:value="${reservation.amenities}" readonly>
+				</div>
+				<div class="sec-con">
+					<span class="sec-tit">요청사항</span>
+					<textarea class="memo" name="memo" readonly>[[${reservation.memo}]]</textarea>
+				</div>
+			</form>
+			<form name="reservationForm" method="post" th:action="@{/reservation/reservationremove}">
+				<th:block th:if="${reservation.userId == session.loginUser}">
+					<input name="requestNum" th:value="${reservation.requestNum}" type="hidden">
+					<ul class="btn">
+						<div style="display: flex;">
+							<li><a href="javascript:modify()" class="modify-btn">수정</a></li>
+							<li><a href="javascript:document.reservationForm.submit()" class="remove-btn">삭제</a></li>
+						</div>
+					</ul>
+				</th:block>
+				<th:block th:if="${session.businessUser == 'O'}">
+					<input name="requestNum" th:value="${reservation.requestNum}" type="hidden">
+					<ul class="btn">
+						<div style="display: flex;">
+							<li><a href="javascript:proposal()" class="modify-btn">제안하기</a></li>
+						</div>
+						<div class="lists-btn">
+							<li><a th:href="${'/reservation/reservationlist'}" class="list-btn">목록</a></li>
+						</div>
+					</ul>
+				</th:block>
+			</form>
+		</div><!--.sub-inner-->
+	</div><!--.wrap-->
+
+	<div id="clock_box">
+		<p id="clock_p">Time is going now.</p>
+		<div id="clock"></div>
+	</div>
+
+	<th:block th:replace="~{layout/footer::footer}"></th:block>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" th:src="@{/main/js/jquery-3.6.0.min.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
+<script type="text/javascript" th:src="@{/main/js/slick.min.js}"></script>
+<script type="text/javascript" th:src="@{/main/js/common.js}"></script>
+<script type="text/javascript" th:src="@{/main/js/main.js}"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111023863-1"></script>
+<script th:inline="javascript">
+	AOS.init({
+		duration: 1200,
+	});
+	
+	function modify() {
+		const reservationForm = document.reservationForm;
+		reservationForm.setAttribute("action",/*[[@{/reservation/reservationmodify}]]*/'');
+		reservationForm.setAttribute("method", "get");
+		reservationForm.submit();
+	}
+	function proposal() {
+		const reservationForm = document.reservationForm;
+		reservationForm.setAttribute("action",/*[[@{/reservation/proposal}]]*/'');
+		reservationForm.setAttribute("method", "post");
+		reservationForm.submit();
+	}
+
+
+	function clock() {
+
+		//Save the times in variables
+
+		var today = new Date();
+
+		var hours = today.getHours();
+		var minutes = today.getMinutes();
+		var seconds = today.getSeconds();
+
+
+		//Set the AM or PM time
+
+		if (hours >= 12) {
+			meridiem = " pm";
+		}
+		else {
+			meridiem = " am";
+		}
+
+
+		//convert hours to 12 hour format and put 0 in front
+		if (hours > 12) {
+			hours = hours - 12;
+		}
+		else if (hours === 0) {
+			hours = 12;
+		}
+
+		//Put 0 in front of single digit minutes and seconds
+
+		if (minutes < 10) {
+			minutes = "0" + minutes;
+		}
+		else {
+			minutes = minutes;
+		}
+
+		if (seconds < 10) {
+			seconds = "0" + seconds;
+		}
+		else {
+			seconds = seconds;
+		}
+
+
+		document.getElementById("clock").innerHTML = (hours + ":" + minutes + ":" + seconds + meridiem);
+
+	}
+
+
+	setInterval('clock()', 1000);
+
+	AOS.init({
+		duration: 1500,
+	});
+
+</script>
+
+</html>

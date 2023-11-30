@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>사업자 정보</title>
+	<link rel="icon" sizes="96x96" th:href="@{/main/images/favi.svg}">
+</head>
+<link rel="stylesheet" th:href="@{/main/css/common.css}">
+<link rel="stylesheet" th:href="@{/main/css/sub.css}">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/Bboard/list/css/style.css}">
+<script src="https://kit.fontawesome.com/81ba6ca618.js" crossorigin="anonymous"></script>
+
+<body>
+	<th:block th:replace="~{layout/header::header}"></th:block>
+	<div class="wrap">
+		<div class="sub-inner">
+			<div class="sub-tit">
+				<h2 data-aos="fade-up">안녕하세요!<br> <strong>사장님!</strong></h2>
+			</div><!--.sub-tit-->
+			<div class="total_section" data-aos="fade-up">
+				<div class="top_profile" data-aos="fade-up">
+					<div class="photo_zone_wrap" data-aos="fade-up">
+						<div class="photo_zone" data-aos="fade-up">
+							<th:block th:if="${profiles != null and profiles.size() > 0}"
+								th:each="profile : ${profiles}">
+								<th:block th:with="sar=${profile.org.split('[.]')}">
+									<th:block th:with="ext=${sar[sar.length-1]}">
+										<th:block
+											th:if="${ext == 'jpg' or ext == 'jpeg' or ext == 'png' or ext == 'gif' or ext == 'webp'}">
+											<ul>
+												<li><img th:src="@{/Bboard/profile (systemName=${profile.systemName})}">
+												</li>
+											</ul>
+										</th:block>
+									</th:block>
+								</th:block>
+							</th:block>
+						</div>
+					</div>
+					<div class="profile_zone" data-aos="fade-up">
+						<div>
+							<p>상호명</p>[[${userboard.businessStoreName}]]
+						</div>
+						<div>
+							<p>카테고리</p>[[${userboard.businessCategory}]]
+						</div>
+						<div>
+							<p>평점</p>[[${infoboard.overallGrade}]] ([[${infoboard.gradeCount}]])
+						</div>
+					</div>
+				</div>
+				<div class="title_section_wrap" data-aos="fade-up">
+					<div class="title_section">
+						<div class="title_section_in">
+							<div class="deteil">
+								<p>번호</p>[[${userboard.businessIdx}]]
+							</div>
+							<div class="deteil">
+								<p>아이디</p>[[${userboard.businessId}]]
+							</div>
+							<div class="deteil">
+								<p>주소</p>[[${userboard.businessAddress}]]
+							</div>
+						</div>
+						<div class="title_section_in">
+							<div class="deteil">
+								<p>운영 시간</p>[[${infoboard.useTime}]]
+							</div>
+							<div class="deteil">
+								<p>제공 가능 서비스</p>
+								<th:block th:each="amenity : ${#strings.arraySplit(infoboard.amenities,',')}">
+									<label>[[${amenity}]]</label>
+								</th:block>
+							</div>
+							<div class="main_content ">
+								<p>한줄소개</p>
+								<textarea readonly>[[${infoboard.content}]]</textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="file_List">
+					<p>이미지</p>
+					<ul class="img_list">
+						<th:block th:if="${files != null and files.size() > 0}" th:each="file : ${files}">
+							<th:block th:with="sar=${file.orgName.split('[.]')}">
+								<th:block th:with="ext=${sar[sar.length-1]}">
+									<th:block
+										th:if="${ext == 'jpg' or ext == 'jpeg' or ext == 'png' or ext == 'gif' or ext == 'webp'}">
+										<li>
+											<img th:src="@{/Bboard/thumbnail (systemName=${file.systemName})}" class="img_file">
+										</li>
+									</th:block>
+								</th:block>
+							</th:block>
+						</th:block>
+						<th:block th:if="${files != null and files.size() == 0}">
+							<li><p>등록 된 사진이 없습니다.</p></li>
+						</th:block>
+					</ul>
+				</div>
+				<div class="reply">
+					<div class="replyForm row">
+						<div>
+							<input type="txt" name="userId" th:value="${session.loginUser}" readonly>
+						</div>
+						<th:block th:if="${session.loginUser!=userboard.businessId}">
+							<div>
+								<fieldset class="rate"></fieldset><br>
+								<textarea name="replyContents" placeholder="" style="resize:none;" value=""></textarea>
+							</div>
+							<div class="btn_wrap">
+								<a href="#" class="button finish" style="margin-bottom: 1rem;">등록</a>
+								<a href="#" class="button cancel">취소</a>
+							</div>
+						</th:block>
+					</div>
+					<ul class="replies"></ul>
+					<div class="page"></div>
+				</div>
+				<div class="modify_btn">
+					<th:block th:if="${userboard.businessId == session.loginUser}">
+						<a class="" th:href="@{/Bboard/modify (businessIdx=${userboard.businessIdx})}"> 수정하기 </a>
+					</th:block>
+				</div>
+			</div><!--.total_section-->
+		</div>
+	</div>
+	<th:block th:replace="~{layout/footer::footer}"></th:block>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" th:src="@{/main/js/jquery-3.6.0.min.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
+<script type="text/javascript" th:src="@{/main/js/common.js}"></script>
+<script type="text/javascript" th:src="@{/main/js/main.js}"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111023863-1"></script>
+
+<script th:src="@{page/js/reply.js}"></script>
+<script th:inline="javascript">
+	AOS.init({
+		duration: 1200,
+	});
+
+	const loginUser = /*[[${session.loginUser}]]*/'';
+	const boardnum = /*[[${userboard.businessIdx}]]*/'';
+	const replies = $(".replies")
+	const page = $(".page")
+	const rate = $(".rate")
+	let nowpage = 0;
+
+	$(document).ready(function () {
+		nowpage = 1;
+		showList(1);
+		let txt = ""
+		for (let i = 10; i >= 1; i--) {
+			txt += '<input type="radio" id="rating' + i + '" name="rating" class="star" value="' + i + '">';
+
+			i % 2 == 0 ? txt += '<label for="rating' + i + '" title="' + i / 2 + '점"></label>' :
+				txt += '<label class="half" for="rating' + i + '" title="' + i / 2 + '점"></label>'
+		}
+
+		rate.html(txt);
+	})
+
+	$(".finish").on("click", function (e) {
+		e.preventDefault();
+		let replyContents = $("[name='replyContents']").val();
+		let grade = $("[name='rating']:checked").val() / 2;
+		if (replyContents == '') {
+			alert("평가를 작성해주세요")
+			$("[name='replyContents']").focus()
+			return false
+		}
+		replyService.add(
+			{"boardNum": boardnum, "userId": loginUser, "replyContents": replyContents, "grade": grade},
+			function (resut) {
+				alert("등록");
+				$("[name='replyContents']").val("");
+				$("[name='rating']").prop('checked', false);
+				showList(1);
+			}
+		)
+	})
+	function showList(pagenum) {
+		replyService.getList(
+			{"boardNum": boardnum, "pagenum": pagenum || 1},
+			function (replyCnt, list) {
+				let str = "";
+				if (list == null || list.length == 0) {
+					str += '<li class="noreply" style="clear:both;">등록된 댓글이 없습니다.</li>';
+					replies.html(str);
+					return;
+				}
+
+				for (let i = 0; i < list.length; i++) {
+
+
+					str += '<li style=clear:both;" class="li' + list[i].relyNum + '">';
+
+					str += '<div class="reply_area">';
+
+					str += '<strong class="userid' + list[i].replyNum + '">' + list[i].userId + '</strong>';
+
+					str += '<span>&nbsp' + list[i].grade.toFixed(1) + '<spand>'
+
+					str += '<p class="reply' + list[i].replyNum + ' replyContent">' + list[i].replyContents + '</p>';
+
+					str += '</div><div style="text-align:right;">'
+
+					str += '<strong>' + replyService.displayTime(list[i]) + '</strong>'
+
+					if (list[i].userId == loginUser) {
+						str += '<a href = "' + list[i].replyNum + '" class ="modify">수정</a>';
+						str += '<a href = "' + list[i].replyNum + '" class="mfinish" style="display:none;">수정 완료</a>';
+						str += '<a href = "' + list[i].replyNum + " " + list[i].boardNum + '" class="remove">삭제</a>';
+					}
+					str += '</div></li><hr>';
+
+				}
+				replies.html(str);
+
+				$(".remove").on("click", deleteReply);
+				$(".modify").on("click", modifyReply);
+				$(".mfinish").on("click", modifyReplyOK);
+
+				showReplyPage(replyCnt, pagenum);
+			}
+		)
+	}
+
+	function showReplyPage(replyCnt, pagenum) {
+		let endPage = Math.ceil(pagenum / 5) * 5;
+		let startPage = endPage - 4;
+
+		let prev = startPage != 1;
+		endPage = (endPage - 1) * 5 >= replyCnt ? Math.ceil(replyCnt / 5) : endPage;
+		let next = endPage * 5 < replyCnt ? true : false;
+
+		let str = "";
+		if (prev) {
+			str += '<a class="changePage" href="' + (startPage - 1) + '"><code>&lt;</code></a>';
+		}
+		for (let i = startPage; i <= endPage; i++) {
+			if (i == pagenum) {
+				str += '<code class = "nowPage">' + i + '</code>';
+			}
+			else {
+				str += '<a class="changePage" href="' + i + '"><code>' + i + '</code></a>';
+			}
+		}
+		if (next) {
+			str += '<a class="changePage" href="' + (endPage + 1) + '"><code>&gt;</code></a>';
+		}
+		page.html(str);
+
+		$(".changePage").on("click", function (e) {
+			e.preventDefault();
+			let target = $(this).attr("href");
+			nowpage = parseInt(target);
+			showList(nowpage);
+			window.setTimeout(function () {
+				window.scrollTo(0, document.body.scrollheight)
+			}, 10)
+		})
+	}
+
+	function deleteReply(e) {
+		e.preventDefault();
+		let replynum = $(this).attr("href").split(" ")[0]
+		let businessInfoIdx = $(this).attr("href").split(" ")[1]
+		console.log(businessInfoIdx)
+		replyService.remove(replynum, businessInfoIdx,
+			function (result) {
+				if (result == "success") {
+					alert(replynum + "번 댓글 삭제 완료!");
+					showList(nowpage);
+				}
+			}
+		)
+	}
+
+	let replyFlag = false;
+	function modifyReply(e) {
+		e.preventDefault();
+		if (!replyFlag) {
+			replyFlag = true;
+			let replynum = $(this).attr("href");
+			const replyTag = $(".reply" + replynum);
+
+			replyTag.html('<textarea class="' + replynum + ' mdf">' + replyTag.text() + '</textarea>')
+			$(this).hide();
+			$(this).next().show();
+		}
+		else {
+			alert("수정중인 댓글이 있습니다!")
+		}
+	}
+	function modifyReplyOK(e) {
+		e.preventDefault();
+		replyFlag = false;
+
+		let replynum = $(this).attr("href");
+		let replyContents = $("." + replynum).val();
+
+		replyService.modify({replyNum: replynum, replyContents: replyContents, boardNum: boardnum, userId: loginUser},
+			function (result) {
+				if (result == "success") {
+					alert(replynum + "번 댓글 수정 완료!");
+					$(".rplyForm").hide();
+					showList(nowpage);
+				}
+			}
+		)
+
+	}
+	$(".cancel").on("click", function (e) {
+		e.preventDefault();
+		$("[name='replyContents']").val("");
+	})
+</script>
+
+</html>

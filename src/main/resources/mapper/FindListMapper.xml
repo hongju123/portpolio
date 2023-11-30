@@ -1,0 +1,144 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.portpolio.mapper.ocoMapper.FindListMapper">
+	<!-- 카테고리별 select -->
+	<select id="getMainList">
+		select * from business_users where business_category like
+		('${main1}%${main2}%') having business_address like
+		('${addr1}%${addr2}%');
+	</select>
+
+	<!-- 별점높은순 -->
+	<select id="getinfo">
+		select * from business_info order by overall_grade desc;
+	</select>
+
+	<!-- 상세페이지 유저 정보 -->
+	<select id="userDetail">
+		select * from business_users where business_idx = #{businessIdx}
+	</select>
+
+	<!-- 상세페이지 유저 게시판 정보 -->
+	<select id="infoDetail">
+		select * from business_info where business_info_idx = #{businessIdx}
+	</select>
+
+	<!-- 상세 페이지 번호 추출 -->
+	<select id="getnum">
+		select business_info_idx from business_info where business_id =
+		#{businessId}
+	</select>
+
+	<!-- 파일 구해오기 -->
+	<select id="getFiles">
+		select * from files where board_num = #{businessInfoIdx}
+	</select>
+
+	<select id="getallprofile">
+		select * from profile
+	</select>
+
+	<select id="getallfiles">
+		select * from files
+	</select>
+
+	<!--프로필사진 꺼내오기-->
+	<select id="getprofile">
+		select * from profile where board_num = #{businessIdx}
+	</select>
+	<delete id="deleteprofile">
+		delete from profile where system_name=#{systemname}
+	</delete>
+
+	<!-- 개인 파일 넣기 -->
+	<insert id="insertFile">
+		insert into files(system_name,org_name,board_num) values
+		(#{systemName},#{orgName},#{boardNum})
+	</insert>
+
+	<delete id="deleteBySystemname">
+		delete from files where system_name=#{systemname}
+	</delete>
+
+
+	<!--프로필 사진 넣기-->
+	<insert id="insertprofile">
+		insert into profile(system_name,org,board_num)
+		value(#{systemName},#{org},#{boardNum})
+	</insert>
+	<!-- 프로필 사진 있는지 체크-->
+	<select id="checkProfile">
+		select count(*) from profile where board_num = #{businessInfoIdx}
+	</select>
+	<!-- 프로필 사진 업데이트 -->
+	<update id="updateprofile">
+		update profile set system_name = #{systemName}, org = #{org} where
+		board_num = #{boardNum}
+	</update>
+
+	<!-- 상세페이지 수정 -->
+	<update id="updateinfo">
+		update business_info set use_time = #{useTime}, content = #{content},
+		amenities = #{amenities} where business_info_idx = #{businessInfoIdx}
+	</update>
+
+	<!-- 리뷰 저장 -->
+	<insert id="insertReply">
+		insert into replies(reply_contents, user_id, board_num,grade)
+		values(#{replyContents},#{userId},#{boardNum},#{grade})
+	</insert>
+
+	<select id="getLastNumber">
+		select max(reply_num) from replies where user_id=#{userId}
+	</select>
+
+	<select id="getTotal">
+		select count(*) from replies where board_num=#{boardNum}
+	</select>
+
+	<select id="getList">
+		select * from replies where board_num=#{boardNum}
+		limit #{cri.startrow},#{cri.amount}
+	</select>
+
+	<update id="updateReply">
+		update replies set reply_contents=#{replyContents}, update_date=now()
+		where reply_num=#{replyNum}
+	</update>
+
+	<!-- 리뷰생성시 평가인원 + 방문수 증가 -->
+	<update id="visit">
+		update business_info set visit_count = visit_count + '1' , grade_count =
+		grade_count + '1' where business_info_idx = #{businessInfoIdx}
+	</update>
+
+	<delete id="deleteReply">
+		delete from replies where reply_num=#{replynum}
+	</delete>
+	<update id="removeInfo">
+		update business_info set visit_count = visit_count - 1,grade_count =
+		grade_count - 1 where business_info_idx = #{businessInfoIdx}
+	</update>
+
+	<!-- 평점 추출 -->
+	<select id="totalGrade">
+		select ifnull(avg(grade),0) from replies where board_num =
+		${businessInfoIdx}
+	</select>
+	<!-- 평점 평균 등록 -->
+	<update id="setallGrade">
+		update business_info set overall_grade = #{allGrade} where
+		business_info_idx = #{businessInfoIdx};
+	</update>
+
+
+	<!-- 모든 정보 가져오기 -->
+	<select id="BusinessinfoList">
+		select * from business_info
+	</select>
+	<select id="BusinessList">
+		select * from business_users
+	</select>
+
+
+</mapper>
+ 
