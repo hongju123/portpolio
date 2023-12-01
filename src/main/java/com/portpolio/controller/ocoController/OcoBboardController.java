@@ -79,13 +79,7 @@ public class OcoBboardController {
 		model.addAttribute("profiles", service.getprofile(businessInfoIdx));
 		System.out.println(service.getprofile(businessInfoIdx).size());
 		String requsetURI = req.getRequestURI();
-		System.out.println(requsetURI);
-		System.out.println(requsetURI);
-		System.out.println(requsetURI);
-		System.out.println(requsetURI);
-		System.out.println(requsetURI);
-		System.out.println(requsetURI);
-		System.out.println(requsetURI);
+
 		return "ocoProject"+requsetURI;
 	}
 
