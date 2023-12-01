@@ -32,13 +32,15 @@ public class OcoReservationController {
 	private FindListService fservice;
 
 	@GetMapping("reservationlist")
-	public void list(Model model, HttpServletRequest req) {
+	public String list(Model model, HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		String loginUser = (String) session.getAttribute("loginUser");
 		List<ReservationDTO> list = service.getReservationList(loginUser);
 		List<ReservationDTO> lists = service.getReservationLists();
 		model.addAttribute("list", list);
 		model.addAttribute("lists", lists);
+
+		return "ocoProject"+req.getRequestURI();
 	}
 	
 	@ResponseBody
@@ -82,11 +84,12 @@ public class OcoReservationController {
 			model.addAttribute("category", "기타");
 			break;
 		}
-		return "reservation/reservationwrite";
+		return "ocoProject/reservation/reservationwrite";
 	}
 
 	@GetMapping("reservationwrite")
-	public void write() {
+	public String write() {
+		return "ocoProject/reservation/reservationwrite";
 	}
 
 	@PostMapping("reservationwrite")
@@ -187,7 +190,7 @@ public class OcoReservationController {
 			model.addAttribute("blist", blist);
 			model.addAttribute("profiles", profiles );
 		}
-		return "reservation/proposal";
+		return "ocoProject/reservation/proposal";
 	}
 
 }

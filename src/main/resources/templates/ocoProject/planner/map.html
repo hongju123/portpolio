@@ -6,22 +6,21 @@
 	<title>플래너 만들기</title>
 	<link rel="icon" sizes="96x96" th:href="@{/main/images/favi.svg}">
 </head>
-<link rel="stylesheet" th:href="@{/main/css/common.css}">
-<link rel="stylesheet" th:href="@{/main/css/main.css}">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<link rel="stylesheet" th:href="@{/main/css/sub.css}">
-<link rel="stylesheet" th:href="@{/planner/css/map.css}">
+<link rel="stylesheet" th:href="@{/ocoProject/main/css/common.css}">
+<link rel="stylesheet" th:href="@{/ocoProject/main/css/main.css}">
+<link rel="stylesheet" th:href="@{/ocoProject/main/css/sub.css}">
+<link rel="stylesheet" th:href="@{/ocoProject/planner/css/map.css}">
 <script th:src="@{/reservation/js/map.js}"></script>
 
 <body>
-	<th:block th:replace="~{layout/header::header}"></th:block>
+	<th:block th:replace="~{ocoProject/layout/header::header}"></th:block>
 	<th:blocked th:if="${session.loginUser==null}">
 		<script>
 			alert("회원만 이용 가능합니다. 로그인후 이용하세요");
 			location.replace("/user/login");
 		</script>
 	</th:blocked>
-	<th:block th:replace="~{layout/subVisual::subVisual}"></th:block>
 	<div class="sub-inner">
 		<div class="sub-tit">
 			<h2 data-aos="fade-up">플래너로<br> 내 여행을 더 쉽게<br> <strong>관리하세요!</strong></h2>
@@ -95,7 +94,7 @@
 		<div class="parent_a"><a href="javascript:sendit()" class="a_input" onclick="return submit()">등록</a></div>
 
 	</div>
-	<th:block th:replace="~{layout/footer::footer}"></th:block>
+	<th:block th:replace="~{ocoProject/layout/footer::footer}"></th:block>
 </body>
 <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -105,11 +104,11 @@
 <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
-<script type="text/javascript" th:src="@{/main/js/slick.min.js}"></script>
-<script type="text/javascript" th:src="@{/main/js/common.js}"></script>
-<script type="text/javascript" th:src="@{/main/js/main.js}"></script>
+<script type="text/javascript" th:src="@{/ocoProject/main/js/slick.min.js}"></script>
+<script type="text/javascript" th:src="@{/ocoProject/main/js/common.js}"></script>
+<script type="text/javascript" th:src="@{/ocoProject/main/js/main.js}"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script th:src="@{/planner/js/map.js}"></script>
+<script th:src="@{/ocoProject/planner/js/map.js}"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111023863-1"></script>
 <script type="text/javascript">
 	function submit() {

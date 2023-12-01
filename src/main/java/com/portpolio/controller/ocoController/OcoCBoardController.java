@@ -78,7 +78,7 @@ public class OcoCBoardController {
 			model.addAttribute("topic",topic);
 		}
 
-		return "Cboard/list";
+		return "ocoProject/Cboard/list";
 
 	}
 	@GetMapping("topic")
@@ -90,7 +90,8 @@ public class OcoCBoardController {
 	}
 
 	@GetMapping("write")
-	public void write(Model model) {
+	public String write(Model model) {
+		return "ocoProject/Cboard/write";
 	}
 
 	@PostMapping("write")
@@ -144,7 +145,7 @@ public class OcoCBoardController {
 				}
 			}
 		}
-		return requestURI;
+		return "ocoProject/"+requestURI;
 	}
 
 	@PostMapping("modify")

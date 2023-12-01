@@ -32,7 +32,8 @@ public class OcoPlannerController {
 	}
 
 	@GetMapping("map")
-	public void map() {
+	public String map() {
+		return "ocoProject/planner/map";
 	}
 
 	@PostMapping("map")

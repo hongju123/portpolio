@@ -5,9 +5,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>맵으로 보기</title>
-	<link rel="icon" sizes="96x96" th:href="@{/main/images/favi.svg}">
-	<link rel="stylesheet" th:href="@{/main/css/common.css}">
-	<link rel="stylesheet" th:href="@{/main/css/sub.css}">
+	<link rel="icon" sizes="96x96" th:href="@{/ocoProject/main/images/favi.svg}">
+	<link rel="stylesheet" th:href="@{/ocoProject/main/css/common.css}">
+	<link rel="stylesheet" th:href="@{/ocoProject/main/css/sub.css}">
 	<style>
 		@keyframes left {
 			0% {
@@ -280,9 +280,9 @@
 </head>
 
 <body>
-	<th:block th:replace="~{layout/header::header}"></th:block>
+	<th:block th:replace="~{ocoProject/layout/header::header}"></th:block>
  <div class="wrap">
-      <th:block th:replace="~{layout/subVisual::subVisual}"></th:block>
+      <th:block th:replace="~{ocoProject/layout/subVisual::subVisual}"></th:block>
       <div class="sub-inner">
          <div class="sub-tit">
             <h2 data-aos="fade-up">여행, 예약부터<br> 막막하다면?<br> <strong>오시오!</strong></h2>
@@ -319,17 +319,17 @@
          </div>
       </div><!--.sub-inner-->
    </div><!--.wrap-->
-	<th:block th:replace="~{layout/footer::footer}"></th:block>
+	<th:block th:replace="~{ocoProject/layout/footer::footer}"></th:block>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script th:src="@{list/js/selectcity.js}"></script>
-<script th:src="@{list/js/selectmain.js}"></script>
+<script th:src="@{ocoProject/list/js/selectcity.js}"></script>
+<script th:src="@{ocoProject/list/js/selectmain.js}"></script>
+<script th:src="@{ocoProject/map/js/onposition.js}"></script>
+<script th:src="@{ocoProject/list/js/modal.js}"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=71d14da2b8928980c31f877a8bc84a90&libraries=services"></script>
-<script th:src="@{map/js/onposition.js}"></script>
-<script type="text/javascript" th:src="@{/main/js/common.js}"></script>
-<script type="text/javascript" th:src="@{/main/js/main.js}"></script>
-<script th:src="@{list/js/modal.js}"></script>
+<script type="text/javascript" th:src="@{/ocoProject/main/js/common.js}"></script>
+<script type="text/javascript" th:src="@{/ocoProject/main/js/main.js}"></script>
 <script th:inline="javascript">
 
 	/*	AOS.init({

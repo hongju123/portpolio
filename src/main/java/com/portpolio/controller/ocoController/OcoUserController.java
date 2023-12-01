@@ -50,20 +50,20 @@ public class OcoUserController {
 			req.getSession().setAttribute("loginUser", kakaoUserDto.getKakaoName());
 			req.getSession().setAttribute("businessUser", "X");
 			req.getSession().setAttribute("socialUser", "kakao");
-			return "redirect:/";
+			return "redirect:/ocoProject/index";
 		} else if (kakaoUser.insert(kakaoUserDto)) {
 			req.getSession().setAttribute("loginUser", kakaoUserDto.getKakaoName());
 			req.getSession().setAttribute("socialUser", "kakao");
 			req.getSession().setAttribute("businessUser", "X");
-			return "redirect:/";
+			return "redirect:/ocoProject/index";
 		} else {
-			return "/userDirectory/login_Page";
+			return "ocoProject/userDirectory/login_Page";
 		}
 	}
 
 	@GetMapping("join")
 	public String joinPage() {
-		return "userDirectory/join_Page";
+		return "ocoProject/userDirectory/join_Page";
 	}
 
 	@PostMapping("join")
@@ -80,13 +80,13 @@ public class OcoUserController {
 			Cookie cookie = new Cookie("joinStatus", "fals");
 			cookie.setMaxAge(1);
 			res.addCookie(cookie);
-			return "userDirectory/join_business_Page";
+			return "ocoProject/userDirectory/join_business_Page";
 		}
 	}
 
 	@GetMapping("join_business_Page")
 	public String joinBusinessPage() {
-		return "userDirectory/join_business_Page.html";
+		return "ocoProject/userDirectory/join_business_Page.html";
 	}
 
 	@PostMapping("join_business")
@@ -99,12 +99,12 @@ public class OcoUserController {
 			Cookie cookie = new Cookie("userId", businessDto.getBusinessId());
 			cookie.setMaxAge(1);
 			res.addCookie(cookie);
-			return "userDirectory/login_Page";
+			return "ocoProject/userDirectory/login_Page";
 		} else {
 			Cookie cookie = new Cookie("joinStatus", "fals");
 			cookie.setMaxAge(1);
 			res.addCookie(cookie);
-			return "userDirectory/join_business_Page";
+			return "ocoProject/userDirectory/join_business_Page";
 		}
 	}
 
@@ -116,7 +116,7 @@ public class OcoUserController {
 
 	@PostMapping("login")
 	public String login() {
-		return "userDirectory/login_Page";
+		return "ocoProject/userDirectory/login_Page";
 	}
 
 	@PostMapping("checklogin") // id 비밀번호 확인
@@ -127,18 +127,18 @@ public class OcoUserController {
 			if (buser.findById(loginUser.getUserId())) {
 				req.getSession().setAttribute("loginUser", loginUser.getUserId());
 				req.getSession().setAttribute("businessUser", "O");
-				return "redirect:/";
+				return "redirect:/ocoProject/index";
 			} else {
 				req.getSession().setAttribute("loginUser", loginUser.getUserId());
 				req.getSession().setAttribute("businessUser", "X");
-				return "redirect:/";
+				return "redirect:/ocoProject/index";
 			}
 		} else {
 			Cookie cookie = new Cookie("login", "fail");
 			cookie.setMaxAge(1);
 			res.addCookie(cookie);
 			System.out.println(cookie.getValue());
-			return "userDirectory/login_Page";
+			return "ocoProject/userDirectory/login_Page";
 		}
 	}
 
@@ -146,12 +146,12 @@ public class OcoUserController {
 	public String logout(HttpServletRequest req) {
 		log.info("........................");
 		req.getSession().invalidate();
-		return "redirect:/";
+		return "redirect:/ocoProject/index";
 	}
 
 	@GetMapping("finduser_Page")
 	public String findpw_page() {
-		return "userDirectory/finduser_Page";
+		return "ocoProject/userDirectory/finduser_Page";
 	}
 
 	// 유저 아이디를 이메일로 찾기
@@ -165,12 +165,12 @@ public class OcoUserController {
 			alert.setMaxAge(1);
 			res.addCookie(cookie);
 			res.addCookie(alert);
-			return "userDirectory/login_Page";
+			return "ocoProject/userDirectory/login_Page";
 		} else {
 			Cookie cookie = new Cookie("info", "false");
 			cookie.setMaxAge(1);
 			res.addCookie(cookie);
-			return "userDirectory/finduser_Page";
+			return "ocoProject/userDirectory/finduser_Page";
 		}
 	}
 
@@ -188,10 +188,10 @@ public class OcoUserController {
 			cookie1.setMaxAge(1);
 			res.addCookie(cookie);
 			res.addCookie(cookie1);
-			return "userDirectory/login_Page";
+			return "ocoProject/userDirectory/login_Page";
 		} else {
 			// else시 없는 것이기때문에 홈페이지 이동하지 않고 다시 제자리
-			return "user/finduser_Page";
+			return "ocoProject/user/finduser_Page";
 		}
 	}
 

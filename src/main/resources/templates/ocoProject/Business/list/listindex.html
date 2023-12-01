@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>findList</title>
 	
-	<link rel="stylesheet" th:href="@{/main/css/common.css}">
+	<link rel="stylesheet" th:href="@{/ocoProject/main/css/common.css}">
 
 	
 	<style>
@@ -28,7 +28,7 @@
 </head>
 
 <body>
-	<th:block th:replace="~{layout/header::header}"></th:block>
+	<th:block th:replace="~{ocoProject/layout/header::header}"></th:block>
 	<div class="wrap">
 		<section class="main_section">
 			<div class="inner">
@@ -46,13 +46,13 @@
 			</div>
 		</section>
 	</div>
-	<th:block th:replace="~{layout/footer::footer}"></th:block>
+	<th:block th:replace="~{ocoProject/layout/footer::footer}"></th:block>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=71d14da2b8928980c31f877a8bc84a90&libraries=services"></script>
-<script th:src="@{list/js/selectcity.js}"></script>
-<script th:src="@{list/js/selectmain.js}"></script>
+<script th:src="@{ocoProject/list/js/selectcity.js}"></script>
+<script th:src="@{ocoProject/list/js/selectmain.js}"></script>
 <script th:inline="javascript">
 	document.getElementsByClassName("write").addeventListerner('click',function(e){
 		e.preventDefault();

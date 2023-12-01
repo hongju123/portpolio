@@ -33,7 +33,7 @@ public class OcoBboardController {
 
 	@GetMapping("getlist")
 	public String getlist() {
-		return "Bboard/listindex.html";
+		return "ocoProject/Bboard/listindex.html";
 	}
 
 	// 찾아보기 리스트 가져오기
@@ -57,7 +57,7 @@ public class OcoBboardController {
 	public String getmap(String main, String city, Model model) {
 		model.addAttribute("main", main);
 		model.addAttribute("city", city);
-		return "Bboard/findmap.html";
+		return "ocoProject/Bboard/findmap.html";
 	}
 
 	// 아이디로 번호값 가져오기
@@ -70,7 +70,6 @@ public class OcoBboardController {
 	// 사업자 소개 페이지 구별
 	@GetMapping(value = { "get", "modify" })
 	public String get(@RequestParam("businessIdx") Long businessIdx, HttpServletRequest req, Model model) {
-
 		Long businessInfoIdx = businessIdx;
 		BusinessDTO userboard = service.userDetail(businessIdx);
 		BusinessInfoDTO infoboard = service.infoDetail(businessIdx);
@@ -80,7 +79,14 @@ public class OcoBboardController {
 		model.addAttribute("profiles", service.getprofile(businessInfoIdx));
 		System.out.println(service.getprofile(businessInfoIdx).size());
 		String requsetURI = req.getRequestURI();
-		return requsetURI;
+		System.out.println(requsetURI);
+		System.out.println(requsetURI);
+		System.out.println(requsetURI);
+		System.out.println(requsetURI);
+		System.out.println(requsetURI);
+		System.out.println(requsetURI);
+		System.out.println(requsetURI);
+		return "ocoProject"+requsetURI;
 	}
 
 	// 사업자 수정 페이지

@@ -5,20 +5,20 @@
 	<title>사업자 가입</title>
 	<link rel="icon" sizes="96x96" th:href="@{/main/images/favi.svg}">
 </head>
-<link rel="stylesheet" th:href="@{/main/css/common.css}">
-<link rel="stylesheet" th:href="@{/main/css/sub.css}">
+<link rel="stylesheet" th:href="@{/ocoProject/main/css/common.css}">
+<link rel="stylesheet" th:href="@{/ocoProject/main/css/sub.css}">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-<link rel="stylesheet" th:href="@{/hong/join_Page/css/css.css}">
+<link rel="stylesheet" th:href="@{/ocoProject/userDirectory/join_Page/css/css.css}">
 </head>
 
 <body>
-	<th:block th:replace="~{layout/header::header}"></th:block>
+	<th:block th:replace="~{ocoProject/layout/header::header}"></th:block>
 	<div class="wrap">
 		<div class="sub-inner">
 			<div class="form_area" data-aos="fade-up">
 				<div class="logo_sub" data-aos="fade-up">
-					<img th:src="@{/main/images/logo_origin.png}" data-aos="fade-up">
+					<img th:src="@{/ocoProject/main/images/logo_origin.png}" data-aos="fade-up">
 					<p data-aos="fade-up">여행, 일일이 찾는게 귀찮을 때 <strong>오시오!</strong> </p>
 				</div>
 				<form class="join_form" method="post" th:action="@{/user/join_business}" data-aos="fade-up">
@@ -157,7 +157,7 @@
 			</div>
 		</div>
 	</div>
-	<th:block th:replace="~{layout/footer::footer}"></th:block>
+	<th:block th:replace="~{ocoProject/layout/footer::footer}"></th:block>
 
 	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -170,8 +170,8 @@
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111023863-1"></script>
 	<script>AOS.init({ duration: 1500, });</script>
 
-	<script th:src="@{/hong/join_business_Page/js/businessCheck.js}"></script>
-	<script th:src="@{/hong/join_business_Page/js/check_join.js}"></script>
+	<script th:src="@{/ocoProject/userDirectory/join_business_Page/js/businessCheck.js}"></script>
+	<script th:src="@{/ocoProject/userDirectory/join_business_Page/js/check_join.js}"></script>
 
 </body>
 

@@ -22,7 +22,7 @@ public class OcoFrontController {
 	@Autowired
 	private BoardService cservice;
 
-	@GetMapping("/")
+	@GetMapping("/ocoProject/index")
 	public String index(HttpServletRequest req, Model model, Long amount, Long startRow) {
 		if (req.getSession().getAttribute("loginUser") != null
 				&& reService.getUser((String) req.getSession().getAttribute("loginUser")) != null) {
@@ -39,7 +39,7 @@ public class OcoFrontController {
 		List<BoardDTO> clist = cservice.getBoardAllList(amount,startRow);
 		model.addAttribute("clist", clist);
 		// System.out.println(req.getSession().getAttribute("loginUser"));
-		return "index";
+		return "ocoProject/index";
 	}
 	
 }

@@ -22,13 +22,13 @@ public class OcoEmailController {
 
     @GetMapping("send")
     public String main() {
-        return "hong/SendMail.html";
+        return "ocoProject/hong/SendMail.html";
     }
 
     @PostMapping("send")
     public String sendMail(MailDTO mailDto) {
         emailService.sendSimpleMessage(mailDto);
-        return "hong/SendMail.html";
+        return "ocoProject/hong/SendMail.html";
     }
 
     @ResponseBody

@@ -13,31 +13,31 @@
 </head>
 
 <body id="main" class="intro notouch">
-	<th:block th:replace="~{layout/header::header}"></th:block>
+	<th:block th:replace="~{/ocoProject/layout/header::header}"></th:block>
 
 	<div class="wrap">
 		<section class="main01 hidden">
 			<div class="main01-slide-wrap">
 				<div class="main01-slide">
 					<div class="main01-slide-txt">
-						<img src="images/ico-quotes.svg" alt="" />
+						<img src="/ocoProject/images/ico-quotes.svg" alt="" />
 						<p>여행, 일일이 찾는게 귀찮을 때
 							<strong>오시오</strong>
 						</p>
 					</div>
 					<div class="img-area">
-						<img th:src="@{/main/images/main_visual01.jpg}">
+						<img th:src="@{/ocoProject/main/images/main_visual01.jpg}">
 					</div>
 				</div>
 				<div class="main01-slide">
 					<div class="main01-slide-txt">
-						<img src="images/ico-quotes.svg" alt="" />
+						<img src="/ocoProjectimages/ico-quotes.svg" alt="" />
 						<p>여행, 일일이 찾는게 귀찮을 때
 							<strong>오시오</strong>
 						</p>
 					</div>
 					<div class="img-area">
-						<img th:src="@{/main/images/main_visual02.jpg}">
+						<img th:src="@{/ocoProject/main/images/main_visual02.jpg}">
 					</div>
 				</div>
 			</div>
@@ -65,7 +65,7 @@
 					<div class="category-item">
 						<div class="category-icon">
 							<a th:href="1" class="get">
-								<img th:src="@{/main/images/main_icon01.png}">
+								<img th:src="@{/ocoProject/main/images/main_icon01.png}">
 							</a>
 						</div>
 						<p class="category-txt">숙소</p>
@@ -73,7 +73,7 @@
 					<div class="category-item">
 						<div class="category-icon">
 							<a href="2" class="get">
-								<img th:src="@{/main/images/main_icon02.png}">
+								<img th:src="@{/ocoProject/main/images/main_icon02.png}">
 							</a>
 						</div>
 						<p class="category-txt">식당</p>
@@ -81,7 +81,7 @@
 					<div class="category-item">
 						<div class="category-icon">
 							<a href="3" class="get">
-								<img th:src="@{/main/images/main_icon03.png}">
+								<img th:src="@{/ocoProject/main/images/main_icon03.png}">
 							</a>
 						</div>
 						<p class="category-txt">카페</p>
@@ -89,7 +89,7 @@
 					<div class="category-item">
 						<div class="category-icon">
 							<a href="4" class="get">
-								<img th:src="@{/main/images/main_icon04.png}">
+								<img th:src="@{/ocoProject/main/images/main_icon04.png}">
 							</a>
 						</div>
 						<p class="category-txt">렌터카</p>
@@ -97,7 +97,7 @@
 					<div class="category-item">
 						<div class="category-icon">
 							<a href="5" class="get">
-								<img th:src="@{/main/images/main_icon05.png}">
+								<img th:src="@{/ocoProject/main/images/main_icon05.png}">
 							</a>
 						</div>
 						<p class="category-txt">기타</p>
@@ -151,7 +151,7 @@
 		</section>
 		<section class="main05">
 			<div class="main05_inner">
-				<div data-aos="fade-right"><img th:src="@{/main/images/main05_img.jpg}"></div>
+				<div data-aos="fade-right"><img th:src="@{ocoProject/main/images/main05_img.jpg}"></div>
 				<div class="main-tit" data-aos="fade-left">
 					<h3>오직 <strong>나를 위한 여행에서<br> 일정을 관리</strong>해보세요.</h3>
 					<p>여행갈 때 찾아보기 번거롭고 불편했던<br> 기존의 예약시스템을 새롭게 만들어낸<br> '오시오'입니다.</p>
@@ -186,7 +186,7 @@
 	<form name="getForm" id="getForm">
 	</form>
 
-	<th:block th:replace="~{layout/footer::footer}"></th:block>
+	<th:block th:replace="~{/ocoProject/layout/footer::footer}"></th:block>
 </body>
 <script type="text/javascript" th:src="@{/ocoProject/main/js/jquery-3.6.0.min.js}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>

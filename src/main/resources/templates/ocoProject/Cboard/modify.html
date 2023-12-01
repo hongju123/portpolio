@@ -5,13 +5,13 @@
 	<title>게시글</title>
 	<link rel="icon" sizes="96x96" th:href="@{/main/images/favi.svg}"> 
 </head>
-<link rel="stylesheet" th:href="@{/main/css/common.css}">
-<link rel="stylesheet" th:href="@{/main/css/sub.css}">
+<link rel="stylesheet" th:href="@{/ocoProject/main/css/common.css}">
+<link rel="stylesheet" th:href="@{/ocoProject/main/css/sub.css}">
+<link rel="stylesheet" th:href="@{/ocoProject/cboard/boardmodify/css/boardmodify.css}">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<link rel="stylesheet" th:href="@{/cboard/boardmodify/css/boardmodify.css}">
 <script src="https://kit.fontawesome.com/81ba6ca618.js" crossorigin="anonymous"></script>
 <body>
-<th:block th:replace="~{layout/header::header}"></th:block>
+<th:block th:replace="~{ocoProject/layout/header::header}"></th:block>
 	<div class="wrap">
 		<div class="sub-inner">
 			<form id="boardForm" method="post" name="boardForm" th:action="@{/Cboard/modify}" enctype="multipart/form-data">
@@ -83,15 +83,15 @@
 			</table>
 		</div>
 	</div>
-<th:block th:replace="~{layout/footer::footer}"></th:block>
+<th:block th:replace="~{ocoProject/layout/footer::footer}"></th:block>
 </body>
-<script th:src="@{/cboard/boardget/js/reply.js}"></script>
+<script th:src="@{/ocoProject/cboard/boardget/js/reply.js}"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" th:src="@{/main/js/jquery-3.6.0.min.js}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
-<script type="text/javascript" th:src="@{/main/js/common.js}"></script>
-<script type="text/javascript" th:src="@{/main/js/main.js}"></script>
+<script type="text/javascript" th:src="@{/ocoProject/main/js/jquery-3.6.0.min.js}"></script>
+<script type="text/javascript" th:src="@{/ocoProject/main/js/common.js}"></script>
+<script type="text/javascript" th:src="@{/ocoProject/main/js/main.js}"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111023863-1"></script>
 <script th:inline="javascript">

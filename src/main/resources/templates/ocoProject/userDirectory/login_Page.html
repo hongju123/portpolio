@@ -3,12 +3,12 @@
 <head>
 	<meta charset="utf-8">
 	<title>로그인</title>
-	<link rel="icon" sizes="96x96" th:href="@{/main/images/favi.svg}">
+	<link rel="icon" sizes="96x96" th:href="@{/ocoProject/main/images/favi.svg}">
 </head>
-<link rel="stylesheet" th:href="@{/main/css/common.css}">
-<link rel="stylesheet" th:href="@{/main/css/sub.css}">
+<link rel="stylesheet" th:href="@{/ocoProject/main/css/common.css}">
+<link rel="stylesheet" th:href="@{/ocoProject/main/css/sub.css}">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<link rel="stylesheet" th:href="@{/hong/login_Page/css/login_frame.css}">
+<link rel="stylesheet" th:href="@{/ocoProject/userDirectory/login_Page/css/login_frame.css}">
 </head>
 
 <body>
@@ -18,12 +18,12 @@
     <script>
         Kakao.init('3a4e4dcb0e4a4dc4d9e2b151c05980dc'); // 사용하려는 앱의 JavaScript 키 입력
     </script>
-    <th:block th:replace="~{layout/header::header}"></th:block>
+    <th:block th:replace="~{ocoProject/layout/header::header}"></th:block>
     <div class="wrap">
         <div class="sub-inner">
             <div class="login_area" data-aos="fade-up">
                 <div class="logo_sub" data-aos="fade-up">
-                    <img th:src="@{/main/images/logo_origin.png}" data-aos="fade-up">
+                    <img th:src="@{/ocoProject/main/images/logo_origin.png}" data-aos="fade-up">
                     <p data-aos="fade-up">여행, 일일이 찾는게 귀찮을 때 <strong>오시오!</strong> </p>
                 </div>
                 <form class="login_form" name="loginForm" th:action="@{/user/checklogin}" method="post"
@@ -39,7 +39,7 @@
                 </form>
                 <button class="login_button" data-aos="fade-up">로그인</button>
                 <a id="kakao-login-btn" href="javascript:loginWithKakao()" data-aos="fade-up">
-                    <img th:src="@{/main/images/icon-login-kakaotalk-btn.svg}">
+                    <img th:src="@{/ocoProject/main/images/icon-login-kakaotalk-btn.svg}">
                     카카오로 시작하기</a>
                 <p id="token-result"></p>
                 <div class="bottom_navi" data-aos="fade-up">
@@ -50,7 +50,7 @@
             </div>
         </div><!--.sub-inner-->
     </div><!--.wrap-->
-    <th:block th:replace="~{layout/footer::footer}"></th:block>
+    <th:block th:replace="~{ocoProject/layout/footer::footer}"></th:block>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script type="text/javascript" th:src="@{/main/js/jquery-3.6.0.min.js}"></script>
@@ -62,7 +62,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111023863-1"></script>
     <script>AOS.init({ duration: 1500, });</script>
-    <script th:src="@{/hong/login_Page/js/login.js}"></script>
+    <script th:src="@{/ocoProject/userDirectory/login_Page/js/login.js}"></script>
 </body>
 
 </html>
