@@ -35,7 +35,7 @@
                 </a>
             </div>
         </header>
-        <section class="main_section">
+        <section class="main_section moving-center-observer">
             <div class="main_title font observer">
                 안녕하세요.<br>
                 저의 코딩 회고록에 오신것을<br>
@@ -43,14 +43,14 @@
                 😄
             </div>
         </section>
-        <section class="second_section">
+        <section class="section1 moving-center-observer">
             <div class="intro font ">
                 <div class="observer">
                     5월달...js로 그림판 만들기<br>
                     음...쉬운데? 코딩 별거 없나???
                 </div>
             </div>
-            <div class="project_area">
+            <div class="project-area">
                 <div class="painting-area">
                     <div class="color-options observer-left">
                         <input type="color" id="color" />
@@ -81,49 +81,40 @@
                 </div>
             </div>
         </section>
-        <section class="html">
+        <section class="moving-center-observer ">
             <div class="intro font ">
                 <div class="observer">
-                    <div style="color: rgb(0,185,24);">NAVER....</div>
-                    <div style="color: #0064FF;">토스 </div>
-                    클론 코딩에 이어..jsp...<br>
-                    그리고 스프링...<br>
+                    음...쉽지않네..<br> 
                     점차..어려워지기 시작한다...
                 </div>
             </div>
-
-			<div class="ppt_area">
-
+			<div class="project-area">
                 <div class="img_container ">
-                    
                     <div class=" card  observer">
                         <img class="card-img growing_effect" th:src="@{/index_resource/img/ppt-0.png}" alt="Download">
                         <div class="card-content">
                             팀이정해지고...
                         </div>
                     </div>
-                    
                     <div class=" card  observer">
                         <img class="card-img growing_effect" th:src="@{/index_resource/img/ppt-1.png}" alt="Download">
                         <div class="card-content">
                             어쩌다보니 조장이 되어버렸다..
                         </div>
                     </div>
-                    
                     <div class=" card  observer">
                         <img class="card-img " th:src="@{/index_resource/img/ppt-2.png}" alt="Download">
                         <div class="card-content">
                             프로젝트...잘 할수 있을까..?
                         </div>
                     </div>
-                    
                 </div>
                 <a class="a-btn growing_effect" th:href="@{/api/file/downLoad/1조_Final.pdf}">
                     ppt 보기
                 </a>
 			</div>
         </section>
-        <section class="spring-section">
+        <section class="spring-section moving-center-observer">
             <div class="font intro">
                 클릭하면 해당 페이지로 이동합니다 
             </div>
@@ -165,7 +156,7 @@
                         </div>
                     </div>
                     <div class="card growing_effect observer">
-                        <a th:href="@{/user/login}">
+                        <a th:href="@{/Cboard/list?topic=}">
                             <img class="card-img" src="index_resource/img/cboard_list.png" alt="">
                             </a>
                         <div class="card-content">

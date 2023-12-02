@@ -1,10 +1,8 @@
 :root{
     --widthSize:0;
+    scroll-behavior: smooth;
 }
 
-section{
-    overflow: hidden;
-}
 a{
     all:unset;
 }
@@ -18,11 +16,12 @@ body {
 
 .wrap {
     color: white;
-    width: 100%;
+    width: 99vw;
     min-height: 100vh;
     background-color: black;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 
@@ -311,9 +310,8 @@ img {
 
 .a-btn{
     cursor: pointer;
-    width: 30%;
-    height: 30%;
-
+    width: 20%;
+    height: 10%;
     display: flex;
     align-items: center;
     justify-content: center;

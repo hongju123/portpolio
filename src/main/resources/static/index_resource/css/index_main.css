@@ -1,6 +1,10 @@
 section{
     width: 100vw;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 .main_section {
     display: flex;
@@ -32,11 +36,6 @@ section{
     letter-spacing: 0.1;
 }
 
-.second_section{
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
 .intro{
     display: flex;
     align-items: center;
@@ -46,11 +45,12 @@ section{
     text-shadow: 0px 0px 10px rgb(255, 255, 255);
 }
 .project-area{
-    height: 80vh;
+    height: 80%;
     width: 100%;
     display: flex;
     justify-content: center;
-    flex-direction: row;
+    align-items: center;
+    flex-direction: column;
     
 }
 .painting-area{
@@ -62,8 +62,8 @@ section{
     margin-left: 3vw;
 }
 canvas {
-    width:800px;
-    height:800px;
+    width:700px;
+    height:700px;
     background-color: white;
     border-radius:10px;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -79,7 +79,7 @@ canvas {
 .color-options {
     display: flex;
     flex-direction: column;
-    gap:20px;
+    gap:10px;
     align-items: center;
 }
 .color-option {
@@ -161,9 +161,4 @@ input#text {
 .img_container>*{
     flex-shrink: 0;
 }
-.ppt_area{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
+

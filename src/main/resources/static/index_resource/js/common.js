@@ -85,3 +85,22 @@ document.addEventListener('DOMContentLoaded', function () {
     let widthSize = document.querySelectorAll(".card").length * 20;
     document.documentElement.style.setProperty("--widthSize", `${-widthSize}vw`);
 });
+
+let movingHandler = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const ratio = entry.intersectionRatio;
+            // entry.target.classList.add("test")
+            // console.log(document.querySelector(".test"));
+            // document.querySelector(".test").scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center', });
+            // setTimeout(function () {
+            //     entry.target.classList.remove("test");
+            // }, 1000);
+            entry.target.scrollIntoView({ behavior: 'smooth', inline: 'center', });
+            console.log("감지됨" + entry.target);
+        }
+    }
+    );
+});
+
+document.querySelectorAll(".moving-center-observer").forEach(element => movingHandler.observe(element));
