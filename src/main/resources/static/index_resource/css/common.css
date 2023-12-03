@@ -2,6 +2,25 @@
     --widthSize:0;
     scroll-behavior: smooth;
 }
+.img_area{
+    width: 100%;
+    height: 80%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img_container{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.img_container>*{
+    flex-shrink: 0;
+}
+
 
 a{
     all:unset;
@@ -38,24 +57,36 @@ header {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 10vh;
-    overflow: hidden;
+    height: 5vh;
 }
 
 .container_area {
+    margin-top: 4px;
+    padding: 0 3vh;
+    border: 1px solid white;
     display: flex;
     align-items: center;
     justify-content: space-between;
     text-align: center;
     width: 100%;
     height: 100%;
+    font-weight: bolder
 }
-
+.container_area>*{
+}
+.container_area>div{
+    cursor: pointer;
+    border: 1px solid white;
+}
+.container_area>a{
+    cursor: pointer;
+    border: 1px solid white;
+}
 .search_area {
     display: flex;
     align-items: center;
     width: 10%;
-    height: 40%;
+    height: 100%;
     border: 1px solid white;
     border-radius: 10px;
     transition: width 1s ease-in-out;
@@ -249,6 +280,7 @@ img {
 
 /* slide show */
 .card{
+    border-radius: 10px;
     width: 30vw ; 
     height: 70%;
     margin: 0 50px;
@@ -273,7 +305,7 @@ img {
     overflow: hidden;
     margin-top: 5px;
     height: 20%;
-    width: 100%;
+    width: 80%;
     font-size: border;
     color: white;
     text-align: center;

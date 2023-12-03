@@ -12,29 +12,7 @@
 
 <body>
     <div class="wrap">
-        <header>
-            <div class="container_area">
-                <div>
-                    <div>메뉴</div>
-                </div>
-                <form action="" class="search_area growing_effect_hover">
-                    <img class="hidden search_img" src="index_resource/img/pngwing.com.png" alt="">
-                    <input type="text" onfocus="showElement(this)" onfocusout="hideElement(this)" name="main_search" class="main_search" placeholder=" 검색" list="data-option">
-                    <datalist id="data-option" class="sizeUp">
-                        <option name="data" value="OCO 스프링 프로젝트 이동하기"></option>
-                        <option name="data" value="OCO 로그인 페이지 이동하기"></option>
-                        <option name="data" value="OCO 회원가입 페이지 이동하기"></option>
-                        <option name="data" value="OCO 비지니스 회원가입 페이지 이동하기"></option>
-                        <option name="data" value="OCO 게시판 페이지 이동하기"></option>
-                    </datalist>
-                </form>
-                <a th:href="@{/user/login}">
-                <div class="login_area">
-                    로그인
-                </div>
-                </a>
-            </div>
-        </header>
+        <th:block th:replace="~{/layout/header::header}"></th:block>
         <section class="one main_section moving-center-observer">
             <div class="main_title font observer">
                 안녕하세요.<br>
@@ -168,9 +146,7 @@
                 </div>
             </div>
 		</section>
-        <footer>
 
-        </footer>
     </div>
     <script src="index_resource/js/common.js"></script>
     <script src="index_resource/js/painting.js"></script>
