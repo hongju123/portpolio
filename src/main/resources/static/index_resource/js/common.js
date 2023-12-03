@@ -86,21 +86,32 @@ document.addEventListener('DOMContentLoaded', function () {
     document.documentElement.style.setProperty("--widthSize", `${-widthSize}vw`);
 });
 
-let movingHandler = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const ratio = entry.intersectionRatio;
-            // entry.target.classList.add("test")
-            // console.log(document.querySelector(".test"));
-            // document.querySelector(".test").scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center', });
-            // setTimeout(function () {
-            //     entry.target.classList.remove("test");
-            // }, 1000);
-            entry.target.scrollIntoView({ behavior: 'smooth', inline: 'center', });
-            console.log("감지됨" + entry.target);
-        }
-    }
-    );
-});
+//새로고침을 하면 작동을 함
 
-document.querySelectorAll(".moving-center-observer").forEach(element => movingHandler.observe(element));
+
+// let movingHandler = new IntersectionObserver(entries => {
+//     entries.forEach(entry => {
+//         if (entry.isIntersecting && entry.intersectionRatio < 1) {
+
+
+
+            // if (entry.target.classList.contains("one")) {
+            //     document.querySelector(".one").scrollIntoView({ behavior: 'smooth', inline: 'center', });
+            // }
+            // if (entry.target.classList.contains("two")) {
+            //     document.querySelector(".two").scrollIntoView({ behavior: 'smooth', inline: 'center', });
+            // }
+            // if (entry.target.classList.contains("three")) {
+            //     document.querySelector(".three").scrollIntoView({ behavior: 'smooth', inline: 'center', });
+            // }
+            // if(entry.target.classList.contains("four")){
+            //     document.querySelector(".four").scrollIntoView({ behavior: 'smooth', inline: 'center', });
+            // }
+            // let first_class_name = "." + entry.target.classList[0];
+            // document.querySelector(".four").scrollIntoView({inline: 'center', });
+
+            // console.log("??왜 한번만 작동하지?");
+    //     }
+    // });
+// }, { threshold: 0.1 });
+// document.querySelectorAll(".moving-center-observer").forEach(element => movingHandler.observe(element));
