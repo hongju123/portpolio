@@ -13,7 +13,7 @@
 <body>
     <div class="wrap">
         <th:block th:replace="~{/layout/header::header}"></th:block>
-        <section class="one main_section moving-center-observer">
+        <section class=" main_section moving-center-observer">
             <div class="main_title font observer">
                 안녕하세요.<br>
                 저의 코딩 회고록에 오신것을<br>
@@ -21,7 +21,7 @@
                 😄
             </div>
         </section>
-        <section class="two section1 moving-center-observer">
+        <section class=" section1 moving-center-observer">
             <div class="intro font ">
                 <div class="observer">
                     5월달...js로 그림판 만들기<br>
@@ -59,16 +59,16 @@
                 </div>
             </div>
         </section>
-        <section class="three moving-center-observer ">
+        <section class=" moving-center-observer ">
             <div class="intro font ">
                 <div class="observer">
-                    음...쉽지않네..<br> 
+                    음...쉽지않네..<br>
                     점차..어려워지기 시작한다...
                 </div>
             </div>
-			<div class="project-area">
+            <div class="project-area">
                 <div class="img_container ">
-                    <div class=" card  observer">
+                    <div class="card observer">
                         <img class="card-img growing_effect" th:src="@{/index_resource/img/ppt-0.png}" alt="Download">
                         <div class="card-content">
                             팀이정해지고...
@@ -90,53 +90,54 @@
                 <a class="a-btn growing_effect" th:href="@{/api/file/downLoad/1조_Final.pdf}">
                     ppt 보기
                 </a>
-			</div>
-        </section>
-        <section class="four spring-section moving-center-observer">
-            <div class="font intro">
-                클릭하면 해당 페이지로 이동합니다 
             </div>
-			<div class="img_area">
-                <div class="img_container slide-left">
-                    <div class="card growing_effect observer">
+        </section>
+        <section class="spring-section moving-center-observer">
+            <div class="font intro">
+                클릭하면 해당 페이지로 이동합니다
+            </div>
+            <div class="img_area">
+                <div class="img_container">
+                    <div class="card growing_effect observer slide-left">
                         <a th:href="@{/user/login}">
-                        <img class="card-img" src="index_resource/img/localhost_8080_user_login.png" alt="">
+                            <img class="card-img" src="index_resource/img/localhost_8080_user_login.png" alt="">
                         </a>
                         <div class="card-content">
                             로그인 페이지에서 무엇이 필요할까..<br>
                             어??이렇게...많아????
                         </div>
                     </div>
-                    <div class="card growing_effect observer">
+                    <div class="card growing_effect observer slide-left">
                         <a th:href="@{/user/join}">
                             <img class="card-img" src="index_resource/img/localhost_8080_user_join.png" alt="">
-                            </a>
+                        </a>
                         <div class="card-content">
                             회원가입처리...와..이거 쉽지 않은걸..?<br>
                             쉽다고 생각했었는데.....
                         </div>
                     </div>
-                    <div class="card growing_effect observer">
+                    <div class="card growing_effect observer slide-left">
                         <a th:href="@{/user/join_business_Page}">
-                            <img class="card-img" src="index_resource/img/localhost_8080_user_join_business_Page (3).png" alt="">
-                            </a>
+                            <img class="card-img"
+                                src="index_resource/img/localhost_8080_user_join_business_Page (3).png" alt="">
+                        </a>
                         <div class="card-content">
                             비지니스 회원가입이 필요하다고..? <br>
                             그럼 어떻게 구분하지???<br>
                         </div>
                     </div>
-                    <div class="card growing_effect observer">
+                    <div class="card growing_effect observer slide-left">
                         <a href="https://github.com/hongju123/project_oco">
                             <img class="card-img" src="index_resource/img/team_git.png" alt="">
-                            </a>
+                        </a>
                         <div class="card-content">
-                            우리...깃도 써야 되지 않을까..? 
+                            우리...깃도 써야 되지 않을까..?
                         </div>
                     </div>
-                    <div class="card growing_effect observer">
+                    <div class="card growing_effect observer slide-left">
                         <a th:href="@{/Cboard/list?topic=}">
                             <img class="card-img" src="index_resource/img/cboard_list.png" alt="">
-                            </a>
+                        </a>
                         <div class="card-content">
                             어렵다고..? <br>
                             못할수도 있지!<br>
@@ -145,7 +146,7 @@
                     </div>
                 </div>
             </div>
-		</section>
+        </section>
 
     </div>
     <script src="index_resource/js/common.js"></script>

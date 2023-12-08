@@ -14,12 +14,12 @@
     <div class="wrap">
         <th:block th:replace="~{./layout/header::header}"></th:block>
         <section class="main-section">
-            <div class="hot-deal">
-                <div class="Promotional-product">
-                    <div>오늘의 핫딜!</div>
+            <div class="hot-deal main-container">
+                <div class="product-area">
+                    <div class="title">오늘의 핫딜!</div>
                     <div class="product-item-area">
-                        <div class="img_container slide-left">
-                            <div class="card growing_effect observer">
+                        <div class="img_container">
+                            <div class="card growing_effect observer slide-left">
                                 <a href="">
                                     <img class="card-img" th:src="@{/index_resource/img/cboard_list.png}" alt="">
                                 </a>
@@ -27,7 +27,7 @@
                                     초특가 세일!
                                 </div>
                             </div>
-                            <div class="card growing_effect observer">
+                            <div class="card growing_effect observer slide-left">
                                 <a href="">
                                     <img class="card-img" th:src="@{/index_resource/img/cboard_list.png}" alt="">
                                 </a>
@@ -38,30 +38,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="discount-product">
-                    <div>오늘의 할인!!</div>
+                <div class="discount-product product-area">
+                    <div class="title">오늘의 할인!!</div>
+                    <div class="product-item-area"></div>
                 </div>
             </div>
-            <div class="recommendation-area">
-                <div>
-                    <div> 
+            <div class="recommendation-area main-container ">
+                <div class="most-consume product-area">
+                    <div class="title">
                         오늘의 소비자들의 판매량 1위
                     </div>
-                    <div>
+                    <div class="product-item-area">
 
                     </div>
                 </div>
-                <div>
-                    <div>
+                <div class="product-area">
+                    <div class="title">
                         맞춤 판매
                     </div>
-                    <div>
-                    //오늘의 날씨 정보를 이용해서 그에 맞는 아이템 보여주기
-                    //10도 이하면 겨울 아이템들
-                    //10~20 사이면 선선한 긴팔
-                    //20~30 사이면 반팔
-                    //30 이상이면 수영관련된 용품들
-                    추운 날씨에는...이거 어때요?
+                    <div class="product-item-area">
+                        //오늘의 날씨 정보를 이용해서 그에 맞는 아이템 보여주기
+                        //10도 이하면 겨울 아이템들
+                        //10~20 사이면 선선한 긴팔
+                        //20~30 사이면 반팔
+                        //30 이상이면 수영관련된 용품들
+                        추운 날씨에는...이거 어때요?
                     </div>
                 </div>
             </div>
@@ -71,6 +72,7 @@
         </section>
     </div>
     <script th:src="@{/index_resource/js/common.js}"></script>
+    <script th:src="@{/whatProject/index_resouce/js/main.js}"></script>
 </body>
 
 </html>
