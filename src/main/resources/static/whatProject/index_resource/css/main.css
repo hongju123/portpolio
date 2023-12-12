@@ -23,17 +23,22 @@ section>div {
     flex-direction: column;
 }
 
-.product-area{
-    width: 99%;
+.product-area {
+    width: 100%;
+    height: 50%;
     border: 1px solid red;
 
 }
-.title{
+
+.title {
     width: 99%;
     height: 20%;
-}
-.product-item-area{
-    width: 99%;
-    height: 80%;
+    border: 1px solid rgb(255, 255, 255);
+
 }
 
+.product-item-area {
+    width: 99%;
+    height: 80%;
+    border: 1px solid rgb(255, 255, 255);
+}

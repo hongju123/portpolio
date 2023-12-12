@@ -6,33 +6,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" th:href="@{/whatProject/index_resouce/css/main.css}">
-    <link rel="stylesheet" th:href="@{/index_resource/css/common.css}">
+    <link rel="stylesheet" th:href="@{/whatProject/index_resource/css/main.css}">
+    <link rel="stylesheet" th:href="@{/whatProject/index_resource/css/common.css}">
 </head>
 
 <body>
     <div class="wrap">
-        <th:block th:replace="~{./layout/header::header}"></th:block>
+        <th:block th:replace="~{./whatProject/layout/header::header}"></th:block>
         <section class="main-section">
             <div class="hot-deal main-container">
                 <div class="product-area">
                     <div class="title">오늘의 핫딜!</div>
                     <div class="product-item-area">
-                        <div class="img_container">
-                            <div class="card growing_effect observer slide-left">
-                                <a href="">
-                                    <img class="card-img" th:src="@{/index_resource/img/cboard_list.png}" alt="">
-                                </a>
-                                <div class="card-content">
-                                    초특가 세일!
+                        <div class="img_area">
+                            <div class="img_container ">
+                                <div class="card growing_effect">
+                                    <a href="">
+                                        <img class="card-img" th:src="@{/index_resource/img/cboard_list.png}" alt="">
+                                    </a>
+                                    <div class="card-content">
+                                        초특가 세일!
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card growing_effect observer slide-left">
-                                <a href="">
-                                    <img class="card-img" th:src="@{/index_resource/img/cboard_list.png}" alt="">
-                                </a>
-                                <div class="card-content">
+                                <div class="card growing_effect">
+                                    <a href="">
+                                        <img class="card-img" th:src="@{/index_resource/img/cboard_list.png}" alt="">
+                                    </a>
+                                    <div class="card-content">
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -71,8 +73,9 @@
 
         </section>
     </div>
-    <script th:src="@{/index_resource/js/common.js}"></script>
-    <script th:src="@{/whatProject/index_resouce/js/main.js}"></script>
+    <script th:src="@{/whatProject/index_resource/js/common.js}"></script>
+
+    <script th:src="@{/whatProject/index_resource/js/main.js}"></script>
 </body>
 
 </html>

@@ -1,6 +1,53 @@
+create database what;
+use what;
+
+
+create table users(
+	idx bigint auto_increment primary key,
+    id varchar(300) unique,
+    name varchar(300),
+    password varchar(300),
+    zip_code VARCHAR(30),							
+	address VARCHAR(255),							
+	address_detail VARCHAR(255),							
+	additional_info VARCHAR(100)	
+);
+
+select * from users;
+
+CREATE TABLE basket( 
+user_idx bigint,
+product_board_num BIGINT,
+business_user_idx varchar(300)
+);
+
+drop table basket;
+
+create table business_users(
+	idx bigint auto_increment primary key,
+    id varchar(300) unique,
+    name varchar(300),
+    password varchar(300),
+    zip_code VARCHAR(30),							
+	address VARCHAR(255),							
+	address_detail VARCHAR(255),							
+	additional_info VARCHAR(100)
+);
+
+create table business_user_items(
+	item_number bigint,
+	business_user_idx bigint,
+    title varchar(300),
+    price int,
+    content text,
+    img varchar(400)
+);
+
+
 CREATE DATABASE oco;							
 USE oco;							
-								
+drop database oco;						
+
 							
 CREATE TABLE users (							
 user_idx INT AUTO_INCREMENT PRIMARY KEY,							
@@ -18,7 +65,7 @@ user_email VARCHAR(100),
 index(user_id)							
 );		
 
-
+select * from users;
 
 CREATE TABLE business_users (							
 business_idx int AUTO_INCREMENT PRIMARY KEY,							
@@ -150,3 +197,5 @@ system_name VARCHAR(255),
 org VARCHAR(255),   
 board_num BIGINT
 );						
+
+
