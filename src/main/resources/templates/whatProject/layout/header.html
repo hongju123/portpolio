@@ -13,7 +13,7 @@
                 <div class="closed-btn" onclick="removeGlobalMenu()">X</div>
             </div>
             <form action="" class="search_area growing_effect_hover">
-                <img class="hidden search_img" src="index_resource/img/pngwing.com.png" alt="">
+                <img class="hidden search_img" th:src="@{/whatProject/index-resource/img/what-logo.png}" alt="">
                 <input type="text" onfocus="showElement(this)" onfocusout="hideElement(this)" name="main_search"
                     class="main_search" placeholder=" 검색" list="data-option">
                 <datalist id="data-option" class="sizeUp">
@@ -24,7 +24,7 @@
                     <option name="data" value="OCO 게시판 페이지 이동하기"></option>
                 </datalist>
             </form>
-            <a th:href="@{/user/login}">
+            <a th:href="@{/what/login-page}">
                 <div class="login_area">
                     로그인
                 </div>

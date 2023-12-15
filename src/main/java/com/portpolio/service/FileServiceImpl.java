@@ -36,7 +36,6 @@ public class FileServiceImpl implements FileService {
                     .contentType(MediaType.APPLICATION_OCTET_STREAM)
                     .body(resource);
             } else {
-            	System.out.println("안되지롱");
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
     }

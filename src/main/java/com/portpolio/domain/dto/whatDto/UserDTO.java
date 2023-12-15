@@ -1,0 +1,18 @@
+package com.portpolio.domain.dto.whatDto;
+
+import lombok.Data;
+
+@Data
+public class UserDTO {
+    private String userId;
+    private String userPassword;
+    private String userName;
+    private String userGender;
+    private String zipCode;
+    private String userAddress;
+    private String userAddressdetail;
+    private String userAdditionalinfo;
+    private String userHobby;
+    private String userEmail;
+    private String userPhoneNumber;
+}

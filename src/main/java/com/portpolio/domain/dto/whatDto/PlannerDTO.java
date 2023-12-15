@@ -1,0 +1,15 @@
+package com.portpolio.domain.dto.whatDto;
+
+import lombok.Data;
+
+@Data
+public class PlannerDTO {
+	private Long scheduleNum;
+	private String scheduleDate;
+	private String storeName;
+	private String addr;
+	private String coords;
+	private String memo;
+	private String userId;
+	private String businessId;
+}

@@ -7,9 +7,8 @@
                 <div class="menu "onclick="showGlobalMenu()">메뉴</div>
             </div>
             <div class="global-menu hidden" >
-                <div><a href="">로그인</a></div>
-                <div><a href="">장바구니 보기</a></div>
-                <div><a href="">마이페이지</a></div>
+                <div><a th:href="@{/ocoProject/index}">OCO project로 이동하기</a></div>
+                <div><a th:href="@{/whatProject/index}">WHAT project로 이동하기(진행중)</a></div>
                 <div class="closed-btn" onclick="removeGlobalMenu()">X</div>
             </div>
             <form action="" class="search_area growing_effect_hover">

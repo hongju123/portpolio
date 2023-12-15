@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/whatProject/login-page/css/main.css}">
+    <link rel="stylesheet" th:href="@{/whatProject/index-resource/css/common.css}">
+</head>
+
+<body>
+    <div class="wrap">
+        <th:block th:replace="~{./whatProject/layout/header::header}"></th:block>
+        <section>
+            <div class="login-area">
+                <div class="intro-area">
+                    <img class="logo" th:src="@{/whatProject/index-resource/img/what-logo.png}" alt="">
+                    <div>LOGIN</div>
+                </div>
+                <form class="login-form" method="post" th:action="@{/what/user/login}">
+                    <div class="input-box">
+                        <div>👉</div>
+                        <input name="id" type="text" placeholder="아이디">
+                        <div class="remove-btn">X</div>
+                    </div>
+                    <div class="input-box">
+                        <div>👉</div>
+                        <input name="pw" type="text" placeholder="패스워드">
+                        <div class="remove-btn">X</div>
+                    </div>
+                    <div class="login-btn"><input type="button" value="로그인하기" onclick="login()"></div>
+                    <div class="kakao-start"><a href="#">카카오로 시작하기</a></div>
+                    <div class="sub-contents">
+                        <div><a href="#">아이디/비밀번호찾기</a></div>
+                        <div><a href="#">회원가입</a></div>
+                        <div><a href="#">사업자 회원가입</a></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+    <script th:src="@{/index_resource/js/common.js}"></script>
+
+    <script th:src="@{/whatProject/login-page/js/main.js}"></script>
+</body>
+
+</html>
